@@ -46,12 +46,18 @@ const mockShopping = [
 
 export default function RightColumn({ onNavigate }: RightColumnProps) {
   const [weather, setWeather] = useState<WeatherData>(mockWeather)
+  const [weatherLive, setWeatherLive] = useState(false)
 
   // Fetch real weather on mount
   useEffect(() => {
     fetch('/api/weather')
       .then((r) => r.ok ? r.json() : null)
-      .then((data) => { if (data) setWeather(data) })
+      .then((data) => {
+        if (data) {
+          setWeather(data)
+          setWeatherLive(true)
+        }
+      })
       .catch(() => {/* keep mock */})
   }, [])
 
@@ -62,6 +68,11 @@ export default function RightColumn({ onNavigate }: RightColumnProps) {
         <div className="flex items-center justify-between mb-2">
           <h2 className="text-xs font-bold text-text-muted uppercase tracking-wider">
             Weather
+            {!weatherLive && (
+              <span className="ml-1.5 text-[8px] text-text-muted/50 font-normal normal-case">
+                (demo)
+              </span>
+            )}
           </h2>
           <span className="text-[10px] text-text-muted">West Milford, NJ</span>
         </div>
