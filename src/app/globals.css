@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
+/* ===== BLKSTAR Command Center Theme Variables ===== */
+
+:root,
+[data-theme="light"] {
+  --bg: #F5F3EF;
+  --surface: #FAFAF7;
+  --card: #FFFFFF;
+  --card-alt: #F0EDE8;
+  --border: #E2DED6;
+  --text: #1a1a2e;
+  --text-secondary: #6B6B7B;
+  --text-muted: #A0A0AD;
+  --accent: #A78BFA;
+  --accent-dark: #8b5cf6;
+  --charcoal: #2D2D3F;
+  --today-border: #65D843;
+  --past-day-bg: #F2E8E8;
+}
+
+[data-theme="dark"] {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --card: #1c2333;
+  --card-alt: #242d3d;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #484f58;
+  --accent: #A78BFA;
+  --accent-dark: #8b5cf6;
+  --charcoal: #e6edf3;
+  --today-border: #65D843;
+  --past-day-bg: #3d2a2a;
+}
+
+/* Life Area Colors — always the same in both themes */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --la-medical: #3B82F6;
+  --la-nutrition: #F97316;
+  --la-financial: #10B981;
+  --la-fitness: #EF4444;
+  --la-pet-care: #14B8A6;
+  --la-business: #A78BFA;
+  --la-home: #A87C5A;
+  --la-personal: #9CA3AF;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-card-alt: var(--card-alt);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-charcoal: var(--charcoal);
+  --color-today-border: var(--today-border);
+  --color-past-day-bg: var(--past-day-bg);
+  --color-la-medical: var(--la-medical);
+  --color-la-nutrition: var(--la-nutrition);
+  --color-la-financial: var(--la-financial);
+  --color-la-fitness: var(--la-fitness);
+  --color-la-pet-care: var(--la-pet-care);
+  --color-la-business: var(--la-business);
+  --color-la-home: var(--la-home);
+  --color-la-personal: var(--la-personal);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Kiosk mode — no scrollbars anywhere */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Agenda panel scrollbar — thin, subtle */
+.agenda-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.agenda-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.agenda-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
 }
