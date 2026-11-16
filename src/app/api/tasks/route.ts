@@ -1,3 +1,4 @@
+import { guard } from '@/lib/auth'
 import { NextResponse } from 'next/server'
 
 const TODOIST_TOKEN = process.env.TODOIST_API_TOKEN
@@ -7,6 +8,8 @@ let cache: { data: unknown; timestamp: number } | null = null
 const CACHE_TTL = 10 * 60 * 1000
 
 export async function GET() {
+  const denied = await guard()
+  if (denied) return denied
   if (cache && Date.now() - cache.timestamp < CACHE_TTL) {
     return NextResponse.json(cache.data)
   }

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import type { KitchenDayResponse, KitchenMeal } from '@/types/kitchen'
+import { fmtAmount } from '@/lib/fractions'
 
 const SLOT_LABEL: Record<string, string> = {
   preworkout: 'Pre-Workout', breakfast: 'Breakfast', lunch: 'Lunch', snack: 'Snack', dinner: 'Dinner',
@@ -68,7 +69,7 @@ function MealCard({ meal, open, onToggle }: { meal: KitchenMeal; open: boolean; 
                   <li key={i} className="pt-1.5 text-[10px] font-bold text-text-secondary">{ing.name.replace(/——/g, '').trim()}</li>
                 ) : (
                   <li key={i} className="text-text-secondary">
-                    <span className="text-text font-medium">{ing.amount} {ing.unit}</span> {ing.name}
+                    <span className="text-text font-medium">{/^(to taste|optional)$/.test(ing.unit) ? ing.unit : `${fmtAmount(ing.amount)} ${ing.unit}`}</span> {ing.name}
                   </li>
                 ))}
             </ul>

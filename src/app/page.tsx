@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import HomeView from '@/components/home/HomeView'
 import KitchenDay from '@/components/kitchen/KitchenDay'
+import KitchenShopping from '@/components/kitchen/KitchenShopping'
 
 export default function Dashboard() {
   const [view, setView] = useState<DashboardView>('home')
@@ -31,6 +32,15 @@ export default function Dashboard() {
     setView(v)
   }, [])
 
+  // Esc exits any non-home view back to Home
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && view !== 'home' && !(e.target instanceof HTMLInputElement)) setView('home')
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [view])
+
   return (
     <div className="flex flex-col h-screen bg-bg text-text overflow-hidden">
       {/* Header */}
@@ -50,7 +60,7 @@ export default function Dashboard() {
         {view === 'briefing' && <PlaceholderView label="Morning Briefing" onBack={() => navigateTo('home')} />}
         {view === 'fitness' && <PlaceholderView label="Fitness Dashboard" onBack={() => navigateTo('home')} />}
         {view === 'nutrition' && <KitchenDay onBack={() => navigateTo('home')} />}
-        {view === 'shopping' && <PlaceholderView label="Shopping / PO" onBack={() => navigateTo('home')} />}
+        {view === 'shopping' && <KitchenShopping onBack={() => navigateTo('home')} />}
       </main>
 
       {/* Footer */}

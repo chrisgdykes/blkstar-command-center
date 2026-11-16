@@ -152,7 +152,7 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
             className={`
               relative flex flex-col items-center justify-start pt-1.5 rounded-lg text-sm transition-all
               ${cell.currentMonth ? 'hover:bg-card-alt cursor-pointer' : 'opacity-30 cursor-default'}
-              ${cell.isPast && cell.currentMonth ? 'bg-past-day-bg/50' : ''}
+              ${cell.isPast && cell.currentMonth ? 'bg-past-day-bg/70' : ''}
               ${cell.isToday ? 'ring-2 ring-today-border font-bold' : ''}
             `}
           >

@@ -107,6 +107,11 @@ export default function Header({ theme, onToggleTheme, currentView, onNavigate }
           )}
         </button>
 
+        {/* Sign out */}
+        <form action="/auth/signout" method="post">
+          <button type="submit" className="text-xs text-text-muted hover:text-text transition-colors">Sign out</button>
+        </form>
+
         {/* Week View Button */}
         <button
           onClick={() => onNavigate('week')}
