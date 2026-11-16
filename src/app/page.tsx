@@ -13,9 +13,10 @@ import PlannerView from '@/components/calendar/PlannerView'
 export default function Dashboard() {
   const [view, setView] = useState<DashboardView>('home')
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date())
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
   useEffect(() => {
+    setSelectedDate(new Date())
     const saved = localStorage.getItem('blkstar-theme') as 'light' | 'dark' | null
     if (saved) {
       setTheme(saved)
@@ -54,7 +55,7 @@ export default function Dashboard() {
 
       <main className="flex-1 overflow-hidden px-5">
         {view === 'home' && <HomeView onNavigate={navigateTo} />}
-        {view === 'day' && (
+        {view === 'day' && selectedDate && (
           <DayView
             date={selectedDate}
             onBack={() => navigateTo('home')}
