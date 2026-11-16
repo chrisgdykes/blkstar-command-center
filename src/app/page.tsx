@@ -7,10 +7,13 @@ import Footer from '@/components/layout/Footer'
 import HomeView from '@/components/home/HomeView'
 import KitchenDay from '@/components/kitchen/KitchenDay'
 import KitchenShopping from '@/components/kitchen/KitchenShopping'
+import DayView from '@/components/calendar/DayView'
+import PlannerView from '@/components/calendar/PlannerView'
 
 export default function Dashboard() {
   const [view, setView] = useState<DashboardView>('home')
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date())
 
   // Initialize theme from localStorage
   useEffect(() => {
@@ -28,7 +31,8 @@ export default function Dashboard() {
     localStorage.setItem('blkstar-theme', next)
   }, [theme])
 
-  const navigateTo = useCallback((v: DashboardView) => {
+  const navigateTo = useCallback((v: DashboardView, date?: Date) => {
+    if (date) setSelectedDate(date)
     setView(v)
   }, [])
 
@@ -54,8 +58,19 @@ export default function Dashboard() {
       {/* Main Content Area */}
       <main className="flex-1 overflow-hidden px-5">
         {view === 'home' && <HomeView onNavigate={navigateTo} />}
-        {view === 'day' && <PlaceholderView label="Day View" onBack={() => navigateTo('home')} />}
-        {view === 'week' && <PlaceholderView label="Week View" onBack={() => navigateTo('home')} />}
+        {view === 'day' && (
+          <DayView
+            date={selectedDate}
+            onBack={() => navigateTo('home')}
+            onDateChange={(d) => setSelectedDate(d)}
+          />
+        )}
+        {view === 'week' && (
+          <PlannerView onBack={() => navigateTo('home')} />
+        )}
+        {view === 'planner' && (
+          <PlannerView onBack={() => navigateTo('home')} />
+        )}
         {view === 'finance' && <PlaceholderView label="Finance Dashboard" onBack={() => navigateTo('home')} />}
         {view === 'briefing' && <PlaceholderView label="Morning Briefing" onBack={() => navigateTo('home')} />}
         {view === 'fitness' && <PlaceholderView label="Fitness Dashboard" onBack={() => navigateTo('home')} />}

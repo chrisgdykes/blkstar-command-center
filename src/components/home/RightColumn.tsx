@@ -5,7 +5,7 @@ import type { DashboardView, WeatherData, Meal, NewsItem } from '@/types'
 import type { KitchenDayResponse } from '@/types/kitchen'
 
 interface RightColumnProps {
-  onNavigate: (view: DashboardView) => void
+  onNavigate: (view: DashboardView, date?: Date) => void
 }
 
 // Mock data — will be replaced with live API calls

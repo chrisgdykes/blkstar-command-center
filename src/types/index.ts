@@ -76,4 +76,4 @@ export interface FooterCard {
   icon?: string
 }
 
-export type DashboardView = 'home' | 'day' | 'week' | 'finance' | 'briefing' | 'fitness' | 'nutrition' | 'shopping'
+export type DashboardView = 'home' | 'day' | 'week' | 'finance' | 'briefing' | 'fitness' | 'nutrition' | 'shopping' | 'planner'

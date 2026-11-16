@@ -7,7 +7,7 @@ interface HeaderProps {
   theme: 'light' | 'dark'
   onToggleTheme: () => void
   currentView: DashboardView
-  onNavigate: (view: DashboardView) => void
+  onNavigate: (view: DashboardView, date?: Date) => void
 }
 
 function getGreeting(hour: number): string {

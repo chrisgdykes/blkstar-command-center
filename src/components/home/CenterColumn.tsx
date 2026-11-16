@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react'
 import type { DashboardView } from '@/types'
 
 interface CenterColumnProps {
-  onNavigate: (view: DashboardView) => void
+  onNavigate: (view: DashboardView, date?: Date) => void
 }
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -19,7 +19,6 @@ function getFirstDayOfMonth(year: number, month: number) {
 
 export default function CenterColumn({ onNavigate }: CenterColumnProps) {
   const [today, setToday] = useState(() => {
-    // Use a stable initial value for SSR, update on mount
     return new Date(2000, 0, 1)
   })
   const [mounted, setMounted] = useState(false)
@@ -39,7 +38,7 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
     const firstDay = getFirstDayOfMonth(viewYear, viewMonth)
     const daysInPrevMonth = getDaysInMonth(viewYear, viewMonth - 1)
 
-    const days: { day: number; currentMonth: boolean; isToday: boolean; isPast: boolean }[] = []
+    const days: { day: number; currentMonth: boolean; isToday: boolean; isPast: boolean; date: Date | null }[] = []
 
     // Previous month trailing days
     for (let i = firstDay - 1; i >= 0; i--) {
@@ -48,6 +47,7 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
         currentMonth: false,
         isToday: false,
         isPast: true,
+        date: null,
       })
     }
 
@@ -60,13 +60,13 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
         viewYear === today.getFullYear()
       const isPast = date < new Date(today.getFullYear(), today.getMonth(), today.getDate())
 
-      days.push({ day: d, currentMonth: true, isToday, isPast: isPast && !isToday })
+      days.push({ day: d, currentMonth: true, isToday, isPast: isPast && !isToday, date })
     }
 
     // Next month leading days to fill the grid (6 rows × 7 = 42)
     const remaining = 42 - days.length
     for (let d = 1; d <= remaining; d++) {
-      days.push({ day: d, currentMonth: false, isToday: false, isPast: false })
+      days.push({ day: d, currentMonth: false, isToday: false, isPast: false, date: null })
     }
 
     return days
@@ -147,7 +147,9 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
           <button
             key={i}
             onClick={() => {
-              if (cell.currentMonth) onNavigate('day')
+              if (cell.currentMonth && cell.date) {
+                onNavigate('day', cell.date)
+              }
             }}
             className={`
               relative flex flex-col items-center justify-start pt-1.5 rounded-lg text-sm transition-all

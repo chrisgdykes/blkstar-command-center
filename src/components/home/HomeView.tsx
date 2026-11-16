@@ -6,7 +6,7 @@ import CenterColumn from './CenterColumn'
 import RightColumn from './RightColumn'
 
 interface HomeViewProps {
-  onNavigate: (view: DashboardView) => void
+  onNavigate: (view: DashboardView, date?: Date) => void
 }
 
 export default function HomeView({ onNavigate }: HomeViewProps) {

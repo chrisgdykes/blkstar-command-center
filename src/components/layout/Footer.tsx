@@ -3,7 +3,7 @@
 import type { DashboardView } from '@/types'
 
 interface FooterProps {
-  onNavigate: (view: DashboardView) => void
+  onNavigate: (view: DashboardView, date?: Date) => void
 }
 
 interface FooterCardData {

@@ -5,7 +5,7 @@ import type { DashboardView, CalendarEvent, TaskStats } from '@/types'
 import { lifeAreaColors } from '@/config/theme'
 
 interface LeftColumnProps {
-  onNavigate: (view: DashboardView) => void
+  onNavigate: (view: DashboardView, date?: Date) => void
 }
 
 // Fallback mock data — used when APIs are unreachable
