@@ -122,7 +122,6 @@ export default function DayView({ date, onBack, onDateChange }: DayViewProps) {
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      {/* Header */}
       <div className="flex items-center justify-between py-3 px-1 shrink-0">
         <div className="flex items-center gap-3">
           <button onClick={onBack} className="text-accent text-sm font-medium hover:text-accent-dark transition-colors">
@@ -143,7 +142,6 @@ export default function DayView({ date, onBack, onDateChange }: DayViewProps) {
         </button>
       </div>
 
-      {/* All-day events */}
       {allDayEvents.length > 0 && (
         <div className="px-1 pb-2 shrink-0">
           <div className="bg-card rounded-lg p-2 flex flex-wrap gap-2">
@@ -164,7 +162,6 @@ export default function DayView({ date, onBack, onDateChange }: DayViewProps) {
         </div>
       )}
 
-      {/* Time grid */}
       <div className="flex-1 overflow-y-auto">
         {loading ? (
           <div className="flex items-center justify-center h-32 text-text-muted text-sm">Loading…</div>
@@ -177,7 +174,6 @@ export default function DayView({ date, onBack, onDateChange }: DayViewProps) {
                 </span>
               </div>
             ))}
-
             <div className="absolute left-14 right-2 top-0 bottom-0">
               {timedEvents.length === 0 && (
                 <div className="flex items-center justify-center h-full text-text-muted text-sm">No events this day</div>
@@ -207,7 +203,6 @@ export default function DayView({ date, onBack, onDateChange }: DayViewProps) {
         )}
       </div>
 
-      {/* Add Event Modal */}
       {showAddModal && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
           <div className="bg-card border border-border rounded-xl p-6 w-full max-w-md mx-4">
@@ -222,7 +217,6 @@ export default function DayView({ date, onBack, onDateChange }: DayViewProps) {
                   onChange={e => setNewEvent(p => ({ ...p, title: e.target.value }))}
                   className="w-full bg-card-alt border border-border rounded-lg px-3 py-2 text-sm text-text focus:outline-none focus:border-accent"
                   placeholder="Event title"
-                  autoFocus
                 />
               </div>
               <div className="flex items-center gap-2">

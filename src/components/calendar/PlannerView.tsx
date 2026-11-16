@@ -119,7 +119,6 @@ export default function PlannerView({ onBack }: PlannerViewProps) {
 
   return (
     <div className="flex h-full overflow-hidden gap-4">
-      {/* Left: Task Sidebar */}
       <div className="w-64 shrink-0 flex flex-col gap-3 overflow-y-auto">
         <div className="bg-card rounded-xl border border-border p-4">
           <h3 className="text-xs font-bold text-text-muted uppercase tracking-wider mb-3">
@@ -175,21 +174,22 @@ export default function PlannerView({ onBack }: PlannerViewProps) {
         )}
       </div>
 
-      {/* Right: Week grid */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="flex items-center gap-3 py-3 shrink-0">
-          <button onClick={onBack} className="text-accent text-sm font-medium hover:text-accent-dark transition-colors">← Home</button>
-          <div className="flex items-center gap-2">
-            <button onClick={prevWeek} className="w-7 h-7 rounded-lg hover:bg-card flex items-center justify-center text-text-muted hover:text-text transition-colors text-lg">‹</button>
-            <span className="text-sm font-bold text-text">{weekLabel}</span>
-            <button onClick={nextWeek} className="w-7 h-7 rounded-lg hover:bg-card flex items-center justify-center text-text-muted hover:text-text transition-colors text-lg">›</button>
+        <div className="flex items-center justify-between py-3 shrink-0">
+          <div className="flex items-center gap-3">
+            <button onClick={onBack} className="text-accent text-sm font-medium hover:text-accent-dark transition-colors">← Home</button>
+            <div className="flex items-center gap-2">
+              <button onClick={prevWeek} className="w-7 h-7 rounded-lg hover:bg-card flex items-center justify-center text-text-muted hover:text-text transition-colors text-lg">‹</button>
+              <span className="text-sm font-bold text-text">{weekLabel}</span>
+              <button onClick={nextWeek} className="w-7 h-7 rounded-lg hover:bg-card flex items-center justify-center text-text-muted hover:text-text transition-colors text-lg">›</button>
+            </div>
+            <button
+              onClick={() => setWeekAnchor(new Date())}
+              className="text-[10px] font-semibold text-accent hover:text-accent-dark px-2 py-0.5 rounded border border-accent/30 hover:border-accent transition-colors"
+            >
+              This Week
+            </button>
           </div>
-          <button
-            onClick={() => setWeekAnchor(new Date())}
-            className="text-[10px] font-semibold text-accent hover:text-accent-dark px-2 py-0.5 rounded border border-accent/30 hover:border-accent transition-colors"
-          >
-            This Week
-          </button>
         </div>
 
         <div className="flex-1 grid grid-cols-7 gap-2 overflow-y-auto">
@@ -202,7 +202,6 @@ export default function PlannerView({ onBack }: PlannerViewProps) {
                   <span className={`text-[10px] font-bold uppercase tracking-wider ${isToday ? 'text-accent' : 'text-text-muted'}`}>{short}</span>
                   <span className={`text-sm font-bold ${isToday ? 'text-accent' : 'text-text'}`}>{num}</span>
                 </div>
-
                 <div className="flex-1 p-1.5 space-y-1 overflow-y-auto">
                   {loadingEvents ? (
                     <div className="text-[10px] text-text-muted text-center py-2">…</div>
@@ -223,7 +222,6 @@ export default function PlannerView({ onBack }: PlannerViewProps) {
                     ))
                   )}
                 </div>
-
                 <button
                   onClick={() => { setAddForDate(date); setShowAddModal(true) }}
                   className="shrink-0 w-full text-[10px] text-text-muted hover:text-accent hover:bg-accent/5 py-1 transition-colors border-t border-border/40"

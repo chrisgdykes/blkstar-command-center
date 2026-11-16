@@ -15,7 +15,6 @@ export default function Dashboard() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [selectedDate, setSelectedDate] = useState<Date>(new Date())
 
-  // Initialize theme from localStorage
   useEffect(() => {
     const saved = localStorage.getItem('blkstar-theme') as 'light' | 'dark' | null
     if (saved) {
@@ -36,7 +35,6 @@ export default function Dashboard() {
     setView(v)
   }, [])
 
-  // Esc exits any non-home view back to Home
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && view !== 'home' && !(e.target instanceof HTMLInputElement)) setView('home')
@@ -47,7 +45,6 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-col h-screen bg-bg text-text overflow-hidden">
-      {/* Header */}
       <Header
         theme={theme}
         onToggleTheme={toggleTheme}
@@ -55,7 +52,6 @@ export default function Dashboard() {
         onNavigate={navigateTo}
       />
 
-      {/* Main Content Area */}
       <main className="flex-1 overflow-hidden px-5">
         {view === 'home' && <HomeView onNavigate={navigateTo} />}
         {view === 'day' && (
@@ -65,12 +61,8 @@ export default function Dashboard() {
             onDateChange={(d) => setSelectedDate(d)}
           />
         )}
-        {view === 'week' && (
-          <PlannerView onBack={() => navigateTo('home')} />
-        )}
-        {view === 'planner' && (
-          <PlannerView onBack={() => navigateTo('home')} />
-        )}
+        {view === 'week' && <PlannerView onBack={() => navigateTo('home')} />}
+        {view === 'planner' && <PlannerView onBack={() => navigateTo('home')} />}
         {view === 'finance' && <PlaceholderView label="Finance Dashboard" onBack={() => navigateTo('home')} />}
         {view === 'briefing' && <PlaceholderView label="Morning Briefing" onBack={() => navigateTo('home')} />}
         {view === 'fitness' && <PlaceholderView label="Fitness Dashboard" onBack={() => navigateTo('home')} />}
@@ -78,7 +70,6 @@ export default function Dashboard() {
         {view === 'shopping' && <KitchenShopping onBack={() => navigateTo('home')} />}
       </main>
 
-      {/* Footer */}
       <Footer onNavigate={navigateTo} />
     </div>
   )
