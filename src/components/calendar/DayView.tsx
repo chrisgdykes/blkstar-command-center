@@ -111,7 +111,8 @@ export default function DayView({ date, onBack, onDateChange }: DayViewProps) {
             })
         }, 500)
       } else {
-        setSaveMsg('Failed to add event.')
+        const errData = await res.json().catch(() => ({}))
+        setSaveMsg(`Failed: ${errData?.error || res.status}`)
       }
     } catch {
       setSaveMsg('Error adding event.')
