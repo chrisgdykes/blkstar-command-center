@@ -46,25 +46,28 @@ export default function LeftColumn({ onNavigate }: LeftColumnProps) {
     fetch('/api/google-calendar')
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
-        if (data?.events?.length > 0) {
-          // Filter to today's events and sort by start time
-          const now = new Date()
-          const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-          const todayEnd = new Date(todayStart.getTime() + 24 * 60 * 60 * 1000)
-
-          const todayEvents = data.events
-            .filter((e: CalendarEvent) => {
-              const start = new Date(e.start_at)
-              return start >= todayStart && start < todayEnd
-            })
-            .sort((a: CalendarEvent, b: CalendarEvent) =>
-              new Date(a.start_at).getTime() - new Date(b.start_at).getTime()
-            )
-
-          setAgenda(todayEvents)
+        if (data?.events) {
+          // API succeeded — mark as live regardless of event count
           setIsLive((prev) => ({ ...prev, calendar: true }))
-        } else {
-          setAgenda([])
+
+          if (data.events.length > 0) {
+            // Filter to today's events and sort by start time
+            const now = new Date()
+            const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+            const todayEnd = new Date(todayStart.getTime() + 24 * 60 * 60 * 1000)
+
+            const todayEvents = data.events
+              .filter((e: CalendarEvent) => {
+                const start = new Date(e.start_at)
+                return start >= todayStart && start < todayEnd
+              })
+              .sort((a: CalendarEvent, b: CalendarEvent) =>
+                new Date(a.start_at).getTime() - new Date(b.start_at).getTime()
+              )
+
+            setAgenda(todayEvents)
+          }
+          // else: leave agenda empty — "No events today" state
         }
       })
       .catch(() => {
