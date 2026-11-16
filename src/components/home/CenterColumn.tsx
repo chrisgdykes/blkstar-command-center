@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useMemo, useEffect } from 'react'
-import type { DashboardView } from '@/types'
+import type { DashboardView, CalendarEvent } from '@/types'
+import { lifeAreaColors } from '@/config/theme'
 
 interface CenterColumnProps {
   onNavigate: (view: DashboardView, date?: Date) => void
@@ -24,6 +25,7 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
   const [mounted, setMounted] = useState(false)
   const [viewYear, setViewYear] = useState(today.getFullYear())
   const [viewMonth, setViewMonth] = useState(today.getMonth())
+  const [eventsByDate, setEventsByDate] = useState<Record<string, CalendarEvent[]>>({})
 
   useEffect(() => {
     const now = new Date()
@@ -31,6 +33,25 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
     setViewYear(now.getFullYear())
     setViewMonth(now.getMonth())
     setMounted(true)
+  }, [])
+
+  // Fetch events and build date→events map
+  useEffect(() => {
+    fetch('/api/google-calendar')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (!data?.events) return
+        const map: Record<string, CalendarEvent[]> = {}
+        for (const event of data.events as CalendarEvent[]) {
+          const dateKey = event.all_day
+            ? event.start_at.slice(0, 10)
+            : event.start_at.slice(0, 10)
+          if (!map[dateKey]) map[dateKey] = []
+          map[dateKey].push(event)
+        }
+        setEventsByDate(map)
+      })
+      .catch(() => {/* silent fail */})
   }, [])
 
   const calendarDays = useMemo(() => {
@@ -143,32 +164,59 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
 
       {/* Calendar Grid */}
       <div className="grid grid-cols-7 flex-1 gap-px">
-        {calendarDays.map((cell, i) => (
-          <button
-            key={i}
-            onClick={() => {
-              if (cell.currentMonth && cell.date) {
-                onNavigate('day', cell.date)
-              }
-            }}
-            className={`
-              relative flex flex-col items-center justify-start pt-1.5 rounded-lg text-sm transition-all
-              ${cell.currentMonth ? 'hover:bg-card-alt cursor-pointer' : 'opacity-30 cursor-default'}
-              ${cell.isPast && cell.currentMonth ? 'bg-past-day-bg/70' : ''}
-              ${cell.isToday ? 'ring-2 ring-today-border font-bold' : ''}
-            `}
-          >
-            <span
+        {calendarDays.map((cell, i) => {
+          const dateKey = cell.date
+            ? `${cell.date.getFullYear()}-${String(cell.date.getMonth() + 1).padStart(2, '0')}-${String(cell.date.getDate()).padStart(2, '0')}`
+            : null
+          const dayEvents = dateKey ? (eventsByDate[dateKey] ?? []) : []
+          const visibleEvents = dayEvents.slice(0, 2)
+          const overflow = dayEvents.length - visibleEvents.length
+
+          return (
+            <button
+              key={i}
+              onClick={() => {
+                if (cell.currentMonth && cell.date) {
+                  onNavigate('day', cell.date)
+                }
+              }}
               className={`
-                w-7 h-7 flex items-center justify-center rounded-full text-xs
-                ${cell.isToday ? 'bg-accent text-white font-bold' : 'text-text'}
-                ${!cell.currentMonth ? 'text-text-muted' : ''}
+                relative flex flex-col items-start justify-start pt-1 px-0.5 pb-1 rounded-lg text-sm transition-all min-h-[52px]
+                ${cell.currentMonth ? 'hover:bg-card-alt cursor-pointer' : 'opacity-30 cursor-default'}
+                ${cell.isPast && cell.currentMonth ? 'bg-past-day-bg/70' : ''}
+                ${cell.isToday ? 'ring-2 ring-today-border font-bold' : ''}
               `}
             >
-              {cell.day}
-            </span>
-          </button>
-        ))}
+              <span
+                className={`
+                  w-6 h-6 flex items-center justify-center rounded-full text-[11px] self-center mb-0.5
+                  ${cell.isToday ? 'bg-accent text-white font-bold' : 'text-text'}
+                  ${!cell.currentMonth ? 'text-text-muted' : ''}
+                `}
+              >
+                {cell.day}
+              </span>
+              {/* Event pills */}
+              <div className="w-full flex flex-col gap-px">
+                {visibleEvents.map((ev) => (
+                  <div
+                    key={ev.id}
+                    className="w-full truncate rounded px-1 text-[9px] font-semibold leading-tight py-px text-white"
+                    style={{ backgroundColor: lifeAreaColors[ev.life_area] ?? '#6B7280' }}
+                    title={ev.title}
+                  >
+                    {ev.title}
+                  </div>
+                ))}
+                {overflow > 0 && (
+                  <div className="text-[8px] text-text-muted font-semibold pl-1">
+                    +{overflow} more
+                  </div>
+                )}
+              </div>
+            </button>
+          )
+        })}
       </div>
     </div>
   )
