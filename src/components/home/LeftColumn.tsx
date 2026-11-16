@@ -16,55 +16,6 @@ const mockTasks: TaskStats = {
   completed: 2,
 }
 
-function getMockAgenda(): CalendarEvent[] {
-  const now = Date.now()
-  return [
-    {
-      id: '1',
-      title: 'Morning Standup',
-      life_area: 'business',
-      event_type: 'meeting',
-      start_at: new Date(now).toISOString(),
-      end_at: new Date(now + 30 * 60000).toISOString(),
-      all_day: false,
-      status: 'scheduled',
-      source: 'google',
-    },
-    {
-      id: '2',
-      title: 'Vet Appointment — Rover',
-      life_area: 'pet_care',
-      event_type: 'appointment',
-      start_at: new Date(now + 2 * 3600000).toISOString(),
-      end_at: new Date(now + 3 * 3600000).toISOString(),
-      all_day: false,
-      status: 'confirmed',
-      source: 'google',
-    },
-    {
-      id: '3',
-      title: 'Gym — Upper Body',
-      life_area: 'fitness',
-      event_type: 'routine',
-      start_at: new Date(now + 5 * 3600000).toISOString(),
-      end_at: new Date(now + 6 * 3600000).toISOString(),
-      all_day: false,
-      status: 'scheduled',
-      source: 'manual',
-    },
-    {
-      id: '4',
-      title: 'Meal Prep — Week Ahead',
-      life_area: 'nutrition',
-      event_type: 'task',
-      start_at: new Date(now + 7 * 3600000).toISOString(),
-      end_at: new Date(now + 8 * 3600000).toISOString(),
-      all_day: false,
-      status: 'scheduled',
-      source: 'manual',
-    },
-  ]
-}
 
 function formatEventTime(iso: string): string {
   return new Date(iso).toLocaleTimeString('en-US', {
@@ -113,11 +64,11 @@ export default function LeftColumn({ onNavigate }: LeftColumnProps) {
           setAgenda(todayEvents)
           setIsLive((prev) => ({ ...prev, calendar: true }))
         } else {
-          setAgenda(getMockAgenda())
+          setAgenda([])
         }
       })
       .catch(() => {
-        setAgenda(getMockAgenda())
+        setAgenda([])
       })
   }, [])
 

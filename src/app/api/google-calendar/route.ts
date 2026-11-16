@@ -10,7 +10,7 @@ const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
 
 // Cache events for 15 minutes
 let cache: { data: unknown; timestamp: number } | null = null
-const CACHE_TTL = 15 * 60 * 1000
+const CACHE_TTL = 2 * 60 * 1000
 
 const MVP_USER_ID = '00000000-0000-0000-0000-000000000001'
 
@@ -77,7 +77,7 @@ export async function GET() {
     // Fetch events: today through 7 days out
     const now = new Date()
     const timeMin = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString()
-    const timeMax = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7).toISOString()
+    const timeMax = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 30).toISOString()
 
     const params = new URLSearchParams({
       timeMin,
