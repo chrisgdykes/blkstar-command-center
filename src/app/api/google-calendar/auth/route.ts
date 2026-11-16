@@ -4,8 +4,7 @@ const CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '956466668751-bo3h2khke2ipt7oh
 const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/api/google-calendar/callback'
 
 const SCOPES = [
-  'https://www.googleapis.com/auth/calendar.readonly',
-  'https://www.googleapis.com/auth/calendar.events.readonly',
+  'https://www.googleapis.com/auth/calendar',
 ].join(' ')
 
 // GET /api/google-calendar/auth — redirects to Google OAuth consent screen
