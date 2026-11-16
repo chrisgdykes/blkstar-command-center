@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-const TODOIST_TOKEN = process.env.TODOIST_API_TOKEN || 'c85b67688bcc6be4af55ad2d6fe18740450812c3'
+const TODOIST_TOKEN = process.env.TODOIST_API_TOKEN
 
 // Cache tasks for 10 minutes
 let cache: { data: unknown; timestamp: number } | null = null
@@ -12,11 +12,13 @@ export async function GET() {
   }
 
   try {
-    const res = await fetch('https://api.todoist.com/rest/v2/tasks', {
+    const res = await fetch('https://api.todoist.com/api/v1/tasks', {
       headers: { Authorization: `Bearer ${TODOIST_TOKEN}` },
     })
     if (!res.ok) throw new Error(`Todoist API: ${res.status}`)
-    const tasks = await res.json()
+    const body = await res.json()
+    // Todoist API v1 returns {results: [...]} or plain array depending on version
+    const tasks = Array.isArray(body) ? body : (body.results || body.items || body.tasks || [])
 
     const today = new Date().toISOString().split('T')[0]
     const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0]

@@ -5,6 +5,7 @@ import type { DashboardView } from '@/types'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import HomeView from '@/components/home/HomeView'
+import KitchenDay from '@/components/kitchen/KitchenDay'
 
 export default function Dashboard() {
   const [view, setView] = useState<DashboardView>('home')
@@ -48,7 +49,7 @@ export default function Dashboard() {
         {view === 'finance' && <PlaceholderView label="Finance Dashboard" onBack={() => navigateTo('home')} />}
         {view === 'briefing' && <PlaceholderView label="Morning Briefing" onBack={() => navigateTo('home')} />}
         {view === 'fitness' && <PlaceholderView label="Fitness Dashboard" onBack={() => navigateTo('home')} />}
-        {view === 'nutrition' && <PlaceholderView label="Kitchen OS" onBack={() => navigateTo('home')} />}
+        {view === 'nutrition' && <KitchenDay onBack={() => navigateTo('home')} />}
         {view === 'shopping' && <PlaceholderView label="Shopping / PO" onBack={() => navigateTo('home')} />}
       </main>
 

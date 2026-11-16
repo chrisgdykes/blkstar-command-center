@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import type { DashboardView, WeatherData, Meal, NewsItem } from '@/types'
+import type { KitchenDayResponse } from '@/types/kitchen'
 
 interface RightColumnProps {
   onNavigate: (view: DashboardView) => void
@@ -25,11 +26,6 @@ const mockWeather: WeatherData = {
   ],
 }
 
-const mockMeals: Meal[] = [
-  { type: 'breakfast', name: 'Oatmeal & Berries', emoji: '🥣', time: '7:30 AM', active: false },
-  { type: 'lunch', name: 'Grilled Chicken Salad', emoji: '🥗', time: '12:30 PM', active: true },
-  { type: 'dinner', name: 'Salmon & Veggies', emoji: '🐟', time: '6:30 PM', active: false },
-]
 
 const mockNews: NewsItem[] = [
   { tag: 'TECH', headline: 'AI Infrastructure Spending Hits Record High' },
@@ -47,6 +43,30 @@ const mockShopping = [
 export default function RightColumn({ onNavigate }: RightColumnProps) {
   const [weather, setWeather] = useState<WeatherData>(mockWeather)
   const [weatherLive, setWeatherLive] = useState(false)
+  const [meals, setMeals] = useState<Meal[] | null>(null)
+
+  // Today's Menu from Kitchen OS (Supabase)
+  useEffect(() => {
+    const d = new Date()
+    const p = (n: number) => String(n).padStart(2, '0')
+    const today = `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
+    fetch(`/api/kitchen/day?date=${today}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data: KitchenDayResponse | null) => {
+        if (!data) return
+        const nowMin = d.getHours() * 60 + d.getMinutes()
+        const list = data.meals.filter((m) => m.recipe).map((m) => {
+          const [h, mi] = (m.meal_time || '12:00').split(':').map(Number)
+          return { min: h * 60 + mi, meal: {
+            type: m.slot as Meal['type'], name: m.recipe!.name, emoji: m.recipe!.emoji || '🍴',
+            time: `${((h + 11) % 12) + 1}:${p(mi)} ${h >= 12 ? 'PM' : 'AM'}`, active: false } }
+        })
+        const nextIdx = list.findIndex((x) => x.min >= nowMin)
+        if (nextIdx >= 0) list[nextIdx].meal.active = true
+        setMeals(list.map((x) => x.meal))
+      })
+      .catch(() => setMeals([]))
+  }, [])
 
   // Fetch real weather on mount
   useEffect(() => {
@@ -110,7 +130,10 @@ export default function RightColumn({ onNavigate }: RightColumnProps) {
           Today&apos;s Menu
         </h2>
         <div className="space-y-1.5">
-          {mockMeals.map((meal) => (
+          {meals && meals.length === 0 && (
+            <div className="text-xs text-text-muted">Nothing planned today</div>
+          )}
+          {(meals ?? []).map((meal) => (
             <div
               key={meal.type}
               className={`flex items-center gap-2 text-sm ${

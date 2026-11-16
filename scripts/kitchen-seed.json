@@ -1,0 +1,1266 @@
+{
+ "recipes": [
+  {
+   "id": "seed-prework-belvita-shake",
+   "name": "Coconut Belvita + Banana + Premier Protein",
+   "category": "preworkout",
+   "emoji": "⚡",
+   "servings": 1,
+   "kcal": 485,
+   "protein": 35,
+   "carbs": 67,
+   "fat": 11,
+   "ingredients": [
+    {
+     "amount": "1",
+     "unit": "pack",
+     "name": "Belvita Coconut Breakfast Biscuits (4 biscuits, 50g)"
+    },
+    {
+     "amount": "1",
+     "unit": "ea",
+     "name": "Medium banana"
+    },
+    {
+     "amount": "1",
+     "unit": "bottle",
+     "name": "Premier Protein Chocolate shake, 11 oz (30g protein ready-to-drink)"
+    }
+   ],
+   "steps": [
+    "Grab a Premier Protein bottle from the fridge — shake it briefly.",
+    "Grab the Belvita pack and banana from the pantry.",
+    "Eat biscuits + banana while sipping the shake.",
+    "Finish within 15 minutes to allow 30+ min digestion before the lift."
+   ],
+   "notes": "LUCAS protocol — grab-and-go pre-lift fuel (no shaker needed)",
+   "prep_min": 1,
+   "cook_min": 0,
+   "meal_prep": "ZERO prep — all shelf-stable + grab-and-go.\n\nKeep Belvita packs + bananas in the pantry zone, Premier Protein bottles in the fridge door. 15-second morning assembly.",
+   "tips": "• Premier Protein beats whey powder for pre-WO: no shaker to wash, consistent 30g protein, drinks fast at 5:50am.\n• Belvita Coconut has 8g fat per pack — borderline for the pre-WO fat window. If you feel heavy under the bar, swap for 3 rice cakes + whey (the other preworkout recipe).\n• Banana adds 27g fast carbs — great for fueling the session.\n• One 12-pack of Premier Protein = ~2.4 weeks of gym-day pre-WO fuel.\n• Pair with Celsius for caffeine timing — same as the rice-cakes meal."
+  },
+  {
+   "id": "seed-preworkout-rice-cakes",
+   "name": "Pre-Workout Rice Cakes & Whey",
+   "category": "preworkout",
+   "emoji": "⚡",
+   "servings": 1,
+   "kcal": 320,
+   "protein": 27,
+   "carbs": 52,
+   "fat": 2,
+   "ingredients": [
+    {
+     "amount": "3",
+     "unit": "ea",
+     "name": "Plain rice cakes (Quaker Lightly Salted or Lundberg)"
+    },
+    {
+     "amount": "1",
+     "unit": "scoop",
+     "name": "Whey protein isolate (~25g protein per scoop)"
+    },
+    {
+     "amount": "1",
+     "unit": "tbsp",
+     "name": "Honey or fruit jam"
+    },
+    {
+     "amount": "8",
+     "unit": "oz",
+     "name": "Cold water (for the shake)"
+    },
+    {
+     "amount": "1",
+     "unit": "can",
+     "name": "Celsius Peach Vibe, 12 oz (pair alongside — don’t mix in)"
+    }
+   ],
+   "steps": [
+    "Pull a pre-filled shaker from the pantry. Add 8 oz cold water. Shake 10 seconds.",
+    "Spread 1 tsp honey or jam on each of 3 rice cakes.",
+    "Crack the Celsius.",
+    "Eat the rice cakes, drink the shake, sip the Celsius. 30 minutes to go time."
+   ],
+   "notes": "LUCAS protocol — built for 6:20am training",
+   "prep_min": 2,
+   "cook_min": 0,
+   "meal_prep": "BULK PREP (Sunday):\n\n1. Pantry zone: keep rice cakes, whey tub, shaker bottle, and honey all in one spot.\n2. Pre-fill 5 shaker bottles with 1 scoop whey each (dry). Mon–Fri: add water, shake, done.\n3. Portion honey into small squeeze bottles if the jar is slow in the morning.\n4. Keep Celsius in the fridge door — same spot every day.",
+   "tips": "• Honey/jam is non-negotiable — rice cakes alone taste like Styrofoam.\n• Vanilla whey + strawberry jam = PB&J vibe without the fat hit.\n• NOT peanut butter — too much fat for the 30-min pre-WO window.\n• Pairs with Celsius Peach Vibe for 200mg caffeine timed to peak at ~6:30am."
+  },
+  {
+   "id": "seed-granola-breakfast-bowl",
+   "name": "High-Protein Granola Breakfast Bowl",
+   "category": "breakfast",
+   "emoji": "🍳",
+   "servings": 4,
+   "kcal": 430,
+   "protein": 40,
+   "carbs": 35,
+   "fat": 11,
+   "ingredients": [
+    {
+     "amount": "4",
+     "unit": "cup",
+     "name": "0% plain or vanilla Greek yogurt (or skyr)"
+    },
+    {
+     "amount": "2",
+     "unit": "scoop",
+     "name": "Vanilla whey, casein, or plant-based protein powder (~60g)"
+    },
+    {
+     "amount": "1.5",
+     "unit": "cup",
+     "name": "High-protein granola (Magic Spoon, Cascadian Farm Protein, or Bear Naked Protein)"
+    },
+    {
+     "amount": "2",
+     "unit": "cup",
+     "name": "Mixed fresh berries (strawberries, blueberries, raspberries)"
+    },
+    {
+     "amount": "4",
+     "unit": "tbsp",
+     "name": "Hemp hearts or chia seeds"
+    },
+    {
+     "amount": "1",
+     "unit": "optional",
+     "name": "Honey, maple syrup, or 1 tbsp peanut butter per bowl"
+    }
+   ],
+   "steps": [
+    "In a large mixing bowl, combine all 4 cups of Greek yogurt with 2 scoops of protein powder. Whisk vigorously (spoon or hand mixer) until smooth and clump-free.",
+    "Divide the protein-infused yogurt evenly across 4 meal-prep containers (~1 cup per bowl).",
+    "Top each with 1/2 cup berries + 1 tbsp hemp hearts or chia seeds.",
+    "Portion 3/8 cup (6 tbsp) granola per serving into SEPARATE small bags or compartments — DO NOT put on yogurt ahead of time, it will go soggy.",
+    "When ready to eat: dump the granola on top, drizzle honey or PB if desired, dig in."
+   ],
+   "notes": "LUCAS protocol — meal-prep 4 bowls at a time",
+   "prep_min": 10,
+   "cook_min": 0,
+   "meal_prep": "THIS RECIPE IS THE BULK PREP — makes 4 breakfasts at once.\n\nSunday 15-min block:\n1. Whisk yogurt + protein powder in one big bowl.\n2. Portion into 4 glass containers.\n3. Top each with berries + seeds.\n4. Portion granola into 4 small bags (ziplock or snack containers).\n5. Fridge 4-5 days. Granola stays crunchy.",
+   "tips": "• Per serving: 430 kcal / 40P / 35C / 11F — fits post-WO breakfast slot nicely.\n• Granola brand MATTERS — Magic Spoon is the highest-protein pick. Standard granola will tank your macros.\n• Add 1 scoop extra whey to the shake on the side if you need to push protein higher.\n• Swap berries weekly (strawberry/blueberry/raspberry/blackberry) for variety."
+  },
+  {
+   "id": "seed-sausage-potato-bowl",
+   "name": "Turkey Sausage, Potato & Cheddar Breakfast Bowl",
+   "category": "breakfast",
+   "emoji": "🍳",
+   "servings": 4,
+   "kcal": 670,
+   "protein": 50,
+   "carbs": 70,
+   "fat": 21,
+   "ingredients": [
+    {
+     "amount": "9.6",
+     "unit": "oz",
+     "name": "Jimmy Dean Fully Cooked Turkey Sausage Crumbles (1 bag, 272g)"
+    },
+    {
+     "amount": "20",
+     "unit": "oz",
+     "name": "Simply Potatoes Signature Seasoned Diced Potatoes (1 bag, 567g)"
+    },
+    {
+     "amount": "1",
+     "unit": "can",
+     "name": "Black beans, 15 oz, rinsed and drained"
+    },
+    {
+     "amount": "1",
+     "unit": "cup",
+     "name": "Sharp shredded cheddar cheese (1/4 cup per serving)"
+    },
+    {
+     "amount": "2",
+     "unit": "cup",
+     "name": "Low-fat cottage cheese, 2% (1/2 cup per serving — hot sauce vehicle + protein boost)"
+    },
+    {
+     "amount": "2",
+     "unit": "cup",
+     "name": "Fresh strawberries, sliced (1/2 cup per serving)"
+    },
+    {
+     "amount": "1",
+     "unit": "tbsp",
+     "name": "Olive oil (or butter)"
+    },
+    {
+     "amount": "1",
+     "unit": "batch",
+     "name": "Spicy Greek Yogurt Dressing (see below — ~3 tbsp per bowl)"
+    },
+    {
+     "amount": "1",
+     "unit": "optional",
+     "name": "Diced bell pepper (sautéed with potatoes)"
+    },
+    {
+     "amount": "",
+     "unit": "",
+     "name": "—— SPICY GREEK YOGURT DRESSING (makes ~1 cup, 6 servings) ——"
+    },
+    {
+     "amount": "1",
+     "unit": "cup",
+     "name": "Fage 0% plain Greek yogurt"
+    },
+    {
+     "amount": "2",
+     "unit": "tbsp",
+     "name": "Sriracha"
+    },
+    {
+     "amount": "1",
+     "unit": "tbsp",
+     "name": "Lime juice (fresh)"
+    },
+    {
+     "amount": "1",
+     "unit": "clove",
+     "name": "Garlic, grated or microplaned"
+    },
+    {
+     "amount": "1",
+     "unit": "tsp",
+     "name": "Honey"
+    },
+    {
+     "amount": "0.5",
+     "unit": "tsp",
+     "name": "Smoked paprika"
+    },
+    {
+     "amount": "1",
+     "unit": "pinch",
+     "name": "Salt"
+    }
+   ],
+   "steps": [
+    "MAKE THE DRESSING (do this first — flavors meld as it sits): Whisk together Greek yogurt + sriracha + lime juice + grated garlic + honey + smoked paprika + salt in a small container. Taste, adjust heat with more sriracha. Fridge until ready.",
+    "CRISP THE POTATOES: Heat olive oil in a large skillet over medium-high. Add Simply Potatoes, spread in single layer. Cook 6-8 min, flipping once, until crispy and browned.",
+    "WARM THE SAUSAGE: Add Jimmy Dean turkey crumbles to the skillet (fully cooked — just heating through). Toss with potatoes 2 min.",
+    "ADD THE BEANS: Stir in drained black beans. Heat 1 more min.",
+    "ASSEMBLE: Divide the sausage/potato/bean mix evenly into 4 meal-prep containers. Sprinkle 1/4 cup shredded cheddar on each while still hot — it melts into the mix.",
+    "TOP WITH COTTAGE CHEESE + STRAWBERRIES: Add 1/2 cup cottage cheese and 1/2 cup sliced strawberries to each bowl (or keep separate until serving if prepping ahead).",
+    "FINISH: Drizzle ~3 tbsp Spicy Greek Yogurt Dressing over the top when serving. Add extra Cholula if you want more heat."
+   ],
+   "notes": "LUCAS protocol — meal-prep 4 bowls at a time with spicy yogurt dressing",
+   "prep_min": 8,
+   "cook_min": 10,
+   "meal_prep": "THIS IS THE BULK PREP — makes 4 breakfasts in ~15 minutes total.\n\nSunday prep block:\n1. Make dressing first (2 min — it improves with sit time).\n2. One skillet, 10 min: crisp potatoes, warm sausage, add beans.\n3. Portion sausage/potato mix + cheddar into 4 containers.\n4. KEEP SEPARATE for freshness: cottage cheese portions, strawberry portions, dressing jar.\n5. Fridge 4-5 days. Daily: reheat base 60-90 sec, add cold cottage cheese + strawberries + drizzle dressing.",
+   "tips": "• Per serving: 670 kcal / 50P / 70C / 21F — crushes the post-WO breakfast target (700/55P/85C/15F) with just 5g off protein and well under fat.\n• Strawberry + cottage cheese + spicy sauce = sweet/creamy/heat trifecta. Works like hot honey on fried chicken.\n• Pre-cooked sausage + par-cooked potatoes = 10 min total vs 35 min from raw.\n• Dressing keeps 5 days — use leftovers on lunch bowls or snack veggies.\n• For higher-heat version: add 1 tsp extra sriracha or a dash of cayenne to the dressing.\n• Swap strawberries for blueberries/raspberries weekly to keep it interesting.\n• Cottage cheese can be replaced with Greek yogurt if preferred (similar protein, lower fat)."
+  },
+  {
+   "id": "seed-chipotle-bowl",
+   "name": "Chipotle-Style Burrito Bowl (Copycat)",
+   "category": "lunch",
+   "emoji": "🥗",
+   "servings": 4,
+   "kcal": 614,
+   "protein": 38.5,
+   "carbs": 84.5,
+   "fat": 13.3,
+   "ingredients": [
+    {
+     "amount": "1",
+     "unit": "lb",
+     "name": "Boneless skinless chicken thighs (or chicken breast)"
+    },
+    {
+     "amount": "4",
+     "unit": "tsp",
+     "name": "Adobo sauce from chipotle peppers in adobo (plus 1 small pepper, minced)"
+    },
+    {
+     "amount": "2",
+     "unit": "tsp",
+     "name": "Olive oil"
+    },
+    {
+     "amount": "0.75",
+     "unit": "tsp",
+     "name": "Ground cumin"
+    },
+    {
+     "amount": "0.75",
+     "unit": "tsp",
+     "name": "Smoked paprika"
+    },
+    {
+     "amount": "0.75",
+     "unit": "tsp",
+     "name": "Garlic powder"
+    },
+    {
+     "amount": "0.75",
+     "unit": "tsp",
+     "name": "Dried oregano"
+    },
+    {
+     "amount": "1",
+     "unit": "to taste",
+     "name": "Salt and pepper"
+    },
+    {
+     "amount": "1.5",
+     "unit": "cup",
+     "name": "Long-grain white or brown rice (dry — makes ~4.5 cups cooked, ~1⅛ cups per bowl)"
+    },
+    {
+     "amount": "3",
+     "unit": "tbsp",
+     "name": "Fresh lime juice (for cilantro-lime rice)"
+    },
+    {
+     "amount": "0.25",
+     "unit": "cup",
+     "name": "Chopped fresh cilantro"
+    },
+    {
+     "amount": "1",
+     "unit": "can",
+     "name": "Black beans, 15 oz, drained and rinsed"
+    },
+    {
+     "amount": "1",
+     "unit": "cup",
+     "name": "Fresh pico de gallo (or jarred salsa)"
+    },
+    {
+     "amount": "1",
+     "unit": "cup",
+     "name": "Corn salsa"
+    },
+    {
+     "amount": "1",
+     "unit": "cup",
+     "name": "Shredded romaine or iceberg lettuce"
+    },
+    {
+     "amount": "0.5",
+     "unit": "cup",
+     "name": "Shredded Monterey Jack or cheddar cheese"
+    },
+    {
+     "amount": "0.5",
+     "unit": "cup",
+     "name": "Sour cream or Greek yogurt (optional)"
+    }
+   ],
+   "steps": [
+    "MARINATE CHICKEN: Toss chicken thighs with adobo sauce, minced chipotle, olive oil, cumin, paprika, garlic powder, oregano, salt, pepper. Let sit 15-30 min (or overnight for best flavor).",
+    "COOK RICE: Rinse 1½ cups rice until the water runs mostly clear. Rice cooker: 1½ cups water. Stove: 2¼ cups water, bring to a boil, cover, reduce to low, 18 min. Rest covered 5-10 min off the heat, then fluff and stir in lime juice + chopped cilantro. Makes ~4.5 cups cooked.",
+    "COOK CHICKEN: Heat a cast iron skillet over medium-high. Sear chicken 4-5 min per side until internal temp hits 165°F. Rest 5 min, then dice.",
+    "WARM BEANS: Heat drained black beans in a small pot with a splash of water + pinch of salt.",
+    "ASSEMBLE BOWLS: Rice base → chicken → beans → pico → corn salsa → cheese → lettuce → sour cream.",
+    "Serve immediately or portion into 4 meal-prep containers: ~1⅛ cups rice + ~3 oz diced chicken + ¼ of the beans, salsas and cheese in each. Keep sour cream + lettuce separate until serving."
+   ],
+   "notes": "delish.com copycat (page blocked — ingredients from standard Chipotle recipe)",
+   "prep_min": 20,
+   "cook_min": 25,
+   "meal_prep": "THIS RECIPE IS THE BULK PREP — makes 4 lunches at once.\n\nSunday 1-hour block:\n1. Marinate chicken in the morning (or overnight).\n2. Rice in rice cooker (hands-off 25 min).\n3. Sear chicken while rice cooks.\n4. Warm beans in a small pot.\n5. Portion base (rice + chicken + beans + salsa + corn + cheese) into 4 containers.\n6. KEEP LETTUCE SEPARATE — add fresh when serving.\n7. Fridge 4 days. Microwave base 90 sec to reheat, then top with cold lettuce + sour cream.",
+   "tips": "• Per serving (4 bowls): ~615 kcal / 38P / 85C / 13F. Built from 1 lb thighs + 1½ cups dry rice (~1⅛ cups cooked per bowl). Sour cream / yogurt topping not counted.\n• Protein top-up: use 2 tbsp Fage 0% per bowl instead of sour cream, and/or add a Premier Protein shake later that day.\n• 1 lb raw thighs ≈ 12 oz cooked ≈ 3 oz diced chicken per container.\n• Chicken thighs are juicier than breast and more forgiving when reheated.\n• For rest-day sizing use 0.85 servings (smaller rice portion) to drop carbs.\n• If you want extra creamy, add 1 tbsp Greek yogurt per bowl instead of sour cream (more protein, less fat)."
+  },
+  {
+   "id": "seed-snack-turkey-bell-hummus",
+   "name": "Snack Bowl: Turkey, Baby Bell, Hummus & Veggies",
+   "category": "snacks",
+   "emoji": "🥜",
+   "servings": 1,
+   "kcal": 410,
+   "protein": 32,
+   "carbs": 28,
+   "fat": 20,
+   "ingredients": [
+    {
+     "amount": "4",
+     "unit": "oz",
+     "name": "Sliced deli turkey (low-sodium)"
+    },
+    {
+     "amount": "2",
+     "unit": "ea",
+     "name": "Mini Babybel cheese (original or light)"
+    },
+    {
+     "amount": "3",
+     "unit": "tbsp",
+     "name": "Hummus (plain or roasted red pepper)"
+    },
+    {
+     "amount": "1",
+     "unit": "cup",
+     "name": "Mixed veggies (carrot sticks, bell pepper strips, grape tomatoes)"
+    },
+    {
+     "amount": "0.25",
+     "unit": "cup",
+     "name": "Whole-grain crackers or pita chips (optional)"
+    }
+   ],
+   "steps": [
+    "Roll or fold turkey slices.",
+    "Unwrap baby bell cheeses.",
+    "Scoop hummus into a small container or ramekin.",
+    "Wash and slice veggies into dippable sticks.",
+    "Assemble bento-style in a container — eat."
+   ],
+   "notes": "LUCAS protocol — grab-and-go afternoon snack",
+   "prep_min": 3,
+   "cook_min": 0,
+   "meal_prep": "BULK PREP (Sunday):\n\n1. Portion turkey into 5 small bags (4 oz each).\n2. Wash and cut veggie sticks for the whole week, store in airtight containers with a damp paper towel.\n3. Scoop hummus into 5 small reusable containers (3 tbsp each).\n4. Keep baby bells in the fridge door.\n5. 30-second assembly each day.",
+   "tips": "• Totally no-cook, snackable, portable.\n• Swap hummus for guac or tzatziki for variety.\n• Add 10 almonds or a hard-boiled egg to push protein higher if needed.\n• Rest-day friendly — fat profile is appropriate for off-training days."
+  },
+  {
+   "id": "seed-snack-eggs-chicken-salad",
+   "name": "Curry Chicken Salad Snack Bowl",
+   "category": "snacks",
+   "emoji": "🥜",
+   "servings": 4,
+   "kcal": 535,
+   "protein": 46,
+   "carbs": 25,
+   "fat": 27,
+   "ingredients": [
+    {
+     "amount": "",
+     "unit": "",
+     "name": "—— CURRY CHICKEN SALAD (makes 4 cups) ——"
+    },
+    {
+     "amount": "0.25",
+     "unit": "cup",
+     "name": "Mayonnaise"
+    },
+    {
+     "amount": "0.25",
+     "unit": "cup",
+     "name": "Plain Greek yogurt"
+    },
+    {
+     "amount": "1",
+     "unit": "tsp",
+     "name": "Lemon juice"
+    },
+    {
+     "amount": "0.5",
+     "unit": "tsp",
+     "name": "Honey"
+    },
+    {
+     "amount": "1",
+     "unit": "tsp",
+     "name": "Curry powder (mild preferred)"
+    },
+    {
+     "amount": "0.25",
+     "unit": "tsp",
+     "name": "Salt"
+    },
+    {
+     "amount": "1",
+     "unit": "to taste",
+     "name": "Fresh cracked black pepper"
+    },
+    {
+     "amount": "2.5",
+     "unit": "cup",
+     "name": "Cooked chicken, chopped (~1.5 lb raw, or shred from soup batch)"
+    },
+    {
+     "amount": "2",
+     "unit": "ribs",
+     "name": "Celery, diced fine"
+    },
+    {
+     "amount": "3",
+     "unit": "ea",
+     "name": "Green onions, sliced"
+    },
+    {
+     "amount": "0.5",
+     "unit": "cup",
+     "name": "Sliced almonds"
+    },
+    {
+     "amount": "0.5",
+     "unit": "cup",
+     "name": "Raisins (golden preferred)"
+    },
+    {
+     "amount": "",
+     "unit": "",
+     "name": "—— FOR EACH SNACK BOWL (serving) ——"
+    },
+    {
+     "amount": "1",
+     "unit": "cup",
+     "name": "Curry chicken salad (from above)"
+    },
+    {
+     "amount": "2",
+     "unit": "ea",
+     "name": "Hard-boiled eggs (on the side)"
+    },
+    {
+     "amount": "1",
+     "unit": "cup",
+     "name": "Raw veggies (baby carrots, celery sticks, grape tomatoes)"
+    }
+   ],
+   "steps": [
+    "MAKE THE DRESSING: Whisk mayo + Greek yogurt + lemon juice + honey + curry powder + salt + pepper in a small bowl. Taste, adjust curry/salt.",
+    "COOK CHICKEN: Season chicken breasts with salt + pepper. Grill or skillet-cook until 165°F internal (~15 min). Let cool. ALTERNATIVE: shred ~2.5 cups from the Chicken Noodle Soup batch to skip this step.",
+    "ASSEMBLE SALAD: In a large bowl, combine diced celery + sliced green onions + almonds + raisins.",
+    "Chop cooled chicken into small cubes, add to bowl. Pour dressing over, stir to coat.",
+    "PORTION: 1 cup chicken salad per container (makes 4). Add 2 hard-boiled eggs on the side + 1 cup raw veggies."
+   ],
+   "notes": "budgetbytes.com — Curry Chicken Salad + 2 hard-boiled eggs on the side",
+   "prep_min": 15,
+   "cook_min": 15,
+   "meal_prep": "BULK PREP (Sunday) — ~30 min, part of your bulk prep session:\n\n1. SHORTCUT: Reserve 2.5 cups of shredded chicken from the Chicken Noodle Soup batch — skips having to cook extra chicken separately.\n2. Mix dressing in a small bowl.\n3. Dice celery, slice green onions, open almond + raisin bags.\n4. Combine everything in a large bowl, portion into 4 containers (1 cup each).\n5. Hard-boil 10 eggs at once (lasts 5 snack days + extras).\n6. Wash + cut veggie sticks for the week.",
+   "tips": "• Per serving: 535 kcal / 46P / 25C / 27F — (curry salad 377 + 2 eggs ~158). Great protein, higher fat (almonds + mayo).\n• Golden raisins vs regular — both work. Golden is slightly sweeter.\n• Toast the almonds in a dry skillet 3-4 min for a flavor upgrade.\n• Curry powder quality matters — fresh matters more than brand.\n• Rotisserie chicken from the store = fastest shortcut if not pulling from soup.\n• Dressing-coated salad keeps 4 days in the fridge; raisins soften over time (fine).\n• This replaces the generic chicken salad with Beth Moncel's Budget Bytes recipe."
+  },
+  {
+   "id": "seed-turkey-chili",
+   "name": "Turkey Chili",
+   "category": "dinner",
+   "emoji": "🍽️",
+   "servings": 6,
+   "kcal": 331,
+   "protein": 29,
+   "carbs": 41,
+   "fat": 7,
+   "ingredients": [
+    {
+     "amount": "2",
+     "unit": "tbsp",
+     "name": "Olive oil"
+    },
+    {
+     "amount": "1",
+     "unit": "lb",
+     "name": "Ground turkey"
+    },
+    {
+     "amount": "1",
+     "unit": "ea",
+     "name": "Yellow onion"
+    },
+    {
+     "amount": "4",
+     "unit": "cloves",
+     "name": "Garlic"
+    },
+    {
+     "amount": "1",
+     "unit": "ea",
+     "name": "Poblano pepper"
+    },
+    {
+     "amount": "1",
+     "unit": "can",
+     "name": "Black beans, 15 oz, drained"
+    },
+    {
+     "amount": "1",
+     "unit": "can",
+     "name": "Kidney beans, 15 oz, drained"
+    },
+    {
+     "amount": "1",
+     "unit": "can",
+     "name": "Pinto beans, 15 oz, drained"
+    },
+    {
+     "amount": "1",
+     "unit": "cup",
+     "name": "Frozen corn"
+    },
+    {
+     "amount": "1",
+     "unit": "can",
+     "name": "Fire-roasted diced tomatoes, 15 oz, with juices"
+    },
+    {
+     "amount": "1",
+     "unit": "can",
+     "name": "Tomato paste, 6 oz"
+    },
+    {
+     "amount": "1",
+     "unit": "tbsp",
+     "name": "Chili powder"
+    },
+    {
+     "amount": "1",
+     "unit": "tsp",
+     "name": "Ground cumin"
+    },
+    {
+     "amount": "0.5",
+     "unit": "tsp",
+     "name": "Dried oregano"
+    },
+    {
+     "amount": "0.5",
+     "unit": "tsp",
+     "name": "Onion powder"
+    },
+    {
+     "amount": "0.25",
+     "unit": "tsp",
+     "name": "Garlic powder"
+    },
+    {
+     "amount": "0.75",
+     "unit": "tsp",
+     "name": "Salt"
+    },
+    {
+     "amount": "0.25",
+     "unit": "tsp",
+     "name": "Black pepper"
+    },
+    {
+     "amount": "2",
+     "unit": "cup",
+     "name": "Water"
+    }
+   ],
+   "steps": [
+    "Heat olive oil in a large pot over medium heat. Cook ground turkey through, breaking it apart as it cooks.",
+    "Dice the onion and poblano, mince the garlic. Add to the pot and sauté until onion is soft and translucent.",
+    "Add drained beans, frozen corn, diced tomatoes with juices, tomato paste, all spices, salt, pepper, and water. Stir to combine.",
+    "Cover and bring to a simmer, then reduce to medium-low. Cook ~30 min, stirring occasionally. Taste and adjust seasoning before serving."
+   ],
+   "notes": "budgetbytes.com (Beth Moncel)",
+   "prep_min": 10,
+   "cook_min": 40,
+   "meal_prep": "THIS RECIPE IS THE BULK PREP — makes 6 dinners at once.\n\nSunday 50-min block:\n1. One pot — brown turkey, sauté veg, dump everything else in, simmer 30 min.\n2. Portion into 6 containers (~1.3 cups each).\n3. Fridge 4-5 days OR freeze 3 months.\n4. Reheat: microwave 2-3 min or stovetop simmer.",
+   "tips": "• Per serving: 331 kcal / 29P / 41C / 7F / 13g fiber.\n• Chili is BETTER on day 2 and 3 — flavors meld.\n• Top with sharp cheddar + Greek yogurt + green onion for extra protein (+10g protein, ~70 kcal).\n• For gym-day dinner target (720/55P), serve over 1 cup rice + add 1 oz cheese to hit macros.\n• Freeze single portions in silicone cubes for emergency meals."
+  },
+  {
+   "id": "seed-cajun-sausage-rice",
+   "name": "Cajun Sausage & Rice Skillet",
+   "category": "dinner",
+   "emoji": "🍽️",
+   "servings": 4,
+   "kcal": 541,
+   "protein": 23,
+   "carbs": 42,
+   "fat": 31,
+   "ingredients": [
+    {
+     "amount": "14",
+     "unit": "oz",
+     "name": "Andouille sausage (or any smoked pork sausage)"
+    },
+    {
+     "amount": "1",
+     "unit": "tbsp",
+     "name": "Cooking oil"
+    },
+    {
+     "amount": "1",
+     "unit": "ea",
+     "name": "Bell pepper, diced"
+    },
+    {
+     "amount": "1",
+     "unit": "tsp",
+     "name": "Smoked paprika"
+    },
+    {
+     "amount": "0.5",
+     "unit": "tsp",
+     "name": "Dried oregano"
+    },
+    {
+     "amount": "0.5",
+     "unit": "tsp",
+     "name": "Dried thyme"
+    },
+    {
+     "amount": "0.25",
+     "unit": "tsp",
+     "name": "Garlic powder"
+    },
+    {
+     "amount": "0.25",
+     "unit": "tsp",
+     "name": "Onion powder"
+    },
+    {
+     "amount": "0.125",
+     "unit": "tsp",
+     "name": "Cayenne pepper"
+    },
+    {
+     "amount": "0.125",
+     "unit": "tsp",
+     "name": "Black pepper"
+    },
+    {
+     "amount": "15",
+     "unit": "oz",
+     "name": "Fire-roasted diced tomatoes, canned, with juices"
+    },
+    {
+     "amount": "1",
+     "unit": "cup",
+     "name": "Long-grain white rice, uncooked"
+    },
+    {
+     "amount": "1.5",
+     "unit": "cup",
+     "name": "Chicken broth"
+    },
+    {
+     "amount": "2",
+     "unit": "ea",
+     "name": "Green onions, sliced"
+    }
+   ],
+   "steps": [
+    "Slice sausage and brown in oil over medium heat in a deep skillet or Dutch oven.",
+    "Add diced bell pepper and cook ~1 min more.",
+    "Stir in all spices and toast 1 min.",
+    "Add tomatoes with juices, rice, and broth. Stir, scraping up browned bits from the bottom.",
+    "Cover, bring to a boil over medium-high, reduce to low, simmer 20 min.",
+    "Remove from heat, let rest covered 5 min.",
+    "Uncover, fold sausage and rice together, top with green onions."
+   ],
+   "notes": "budgetbytes.com (Beth Moncel)",
+   "prep_min": 15,
+   "cook_min": 30,
+   "meal_prep": "MAKES 4 DINNERS — one skillet, one night.\n\nSunday 45 min:\n1. One pan — brown sausage, add rest, simmer 20 min covered.\n2. Portion into 4 containers (~1.5 cups each).\n3. Fridge 4 days. Microwave 2 min with a splash of water.",
+   "tips": "• Per serving: 541 kcal / 23P / 42C / 31F — FAT is high (sausage drives it).\n• For LUCAS gym-day dinner target (720/55P/70C/24F), add 4 oz grilled chicken to each serving to push protein up and dilute the fat ratio.\n• Swap Andouille for chicken sausage to cut fat ~40% and keep protein steady.\n• Add 1 cup frozen spinach or peas in the last 5 min for fiber + volume."
+  },
+  {
+   "id": "seed-halal-chicken-rice",
+   "name": "Halal Guys-Style Chicken & Rice",
+   "category": "dinner",
+   "emoji": "🍽️",
+   "servings": 6,
+   "kcal": 720,
+   "protein": 40,
+   "carbs": 65,
+   "fat": 28,
+   "ingredients": [
+    {
+     "amount": "2",
+     "unit": "lb",
+     "name": "Boneless skinless chicken thighs, cut into 1/2-3/4 in pieces"
+    },
+    {
+     "amount": "1",
+     "unit": "tbsp+tsp",
+     "name": "Kosher salt"
+    },
+    {
+     "amount": "0.5",
+     "unit": "tsp",
+     "name": "Ground turmeric"
+    },
+    {
+     "amount": "2",
+     "unit": "tsp",
+     "name": "Ground cumin"
+    },
+    {
+     "amount": "1",
+     "unit": "tsp",
+     "name": "Ground coriander"
+    },
+    {
+     "amount": "0.5",
+     "unit": "tsp",
+     "name": "Black pepper"
+    },
+    {
+     "amount": "2",
+     "unit": "tsp",
+     "name": "Smoked paprika"
+    },
+    {
+     "amount": "0.5",
+     "unit": "tsp",
+     "name": "Cayenne pepper"
+    },
+    {
+     "amount": "1",
+     "unit": "tsp",
+     "name": "Dried oregano"
+    },
+    {
+     "amount": "3",
+     "unit": "tbsp",
+     "name": "Fresh lemon juice"
+    },
+    {
+     "amount": "0.25",
+     "unit": "cup",
+     "name": "Harissa paste"
+    },
+    {
+     "amount": "1",
+     "unit": "clove",
+     "name": "Garlic, grated"
+    },
+    {
+     "amount": "2",
+     "unit": "cup",
+     "name": "Long-grain basmati rice, rinsed"
+    },
+    {
+     "amount": "1",
+     "unit": "tsp",
+     "name": "Turmeric (for rice)"
+    },
+    {
+     "amount": "0.5",
+     "unit": "tsp",
+     "name": "Cumin (for rice)"
+    },
+    {
+     "amount": "1.5",
+     "unit": "tsp",
+     "name": "Kosher salt (for rice)"
+    },
+    {
+     "amount": "2",
+     "unit": "cup",
+     "name": "Chicken stock"
+    },
+    {
+     "amount": "2",
+     "unit": "tbsp",
+     "name": "Unsalted butter"
+    },
+    {
+     "amount": "0.75",
+     "unit": "cup",
+     "name": "Mayonnaise (for white sauce)"
+    },
+    {
+     "amount": "0.5",
+     "unit": "cup",
+     "name": "Sour cream (for white sauce)"
+    },
+    {
+     "amount": "1.5",
+     "unit": "tbsp",
+     "name": "Lemon juice (for white sauce)"
+    },
+    {
+     "amount": "2",
+     "unit": "tsp",
+     "name": "White distilled vinegar (for white sauce)"
+    },
+    {
+     "amount": "1",
+     "unit": "head",
+     "name": "Iceberg lettuce, shredded (or 1 bag shredded)"
+    },
+    {
+     "amount": "6",
+     "unit": "ea",
+     "name": "Pita bread"
+    }
+   ],
+   "steps": [
+    "CHICKEN MARINADE: Combine chicken with all spices, salt, lemon juice, harissa. Refrigerate overnight or up to 2 days.",
+    "SEAR CHICKEN: Heat large skillet over medium-high, lightly oil. Sear chicken in batches in a single layer 2-3 min per side, then lower to medium and cook to 165°F internal. Rest, then toss hot chicken with grated garlic.",
+    "RICE: Add rice + spices + salt + stock to rice cooker, start it. When done, fluff and mix in cold cubed butter until melted.",
+    "WHITE SAUCE: Whisk mayo + sour cream + sugar + lemon juice + vinegar + grated garlic until smooth. Season, refrigerate.",
+    "ASSEMBLE: Plate rice → chicken → lettuce → white sauce. Serve with warm pita."
+   ],
+   "notes": "joshuaweissman.com (nutrition estimated)",
+   "prep_min": 30,
+   "cook_min": 45,
+   "meal_prep": "MAKES 6 DINNERS.\n\nSat/Sun prep:\n1. Marinate chicken overnight.\n2. Day of: sear chicken (20 min), rice in rice cooker (hands-off), make white sauce (5 min), prep veg.\n3. Portion rice + chicken + veg into 6 containers. White sauce + pita separate.\n4. Reheat rice + chicken 2 min microwave. Add cold sauce + fresh veg + warm pita.",
+   "tips": "• Per serving: 720 kcal / 40P / 65C / 28F — hits dinner macros almost exactly.\n• White sauce is the signature — don't skip it, but portion it (2 tbsp per serving) to control fat.\n• Sub Greek yogurt for sour cream in the white sauce to boost protein and cut fat.\n• For higher protein target, use 2.5 lb chicken instead of 2 lb (adds ~8g protein/serving).\n• Harissa adds heat — reduce by half if you're sensitive."
+  },
+  {
+   "id": "seed-chicken-noodle-soup",
+   "name": "Chicken Noodle Soup",
+   "category": "dinner",
+   "emoji": "🍽️",
+   "servings": 8,
+   "kcal": 213,
+   "protein": 17,
+   "carbs": 21,
+   "fat": 7,
+   "ingredients": [
+    {
+     "amount": "1",
+     "unit": "ea",
+     "name": "Medium yellow onion"
+    },
+    {
+     "amount": "3",
+     "unit": "cloves",
+     "name": "Garlic"
+    },
+    {
+     "amount": "4",
+     "unit": "ea",
+     "name": "Carrots"
+    },
+    {
+     "amount": "2",
+     "unit": "ribs",
+     "name": "Celery"
+    },
+    {
+     "amount": "1",
+     "unit": "tbsp",
+     "name": "Fresh parsley"
+    },
+    {
+     "amount": "2",
+     "unit": "tbsp",
+     "name": "Olive oil"
+    },
+    {
+     "amount": "1",
+     "unit": "tsp",
+     "name": "Dried basil"
+    },
+    {
+     "amount": "0.5",
+     "unit": "tsp",
+     "name": "Dried thyme"
+    },
+    {
+     "amount": "1",
+     "unit": "ea",
+     "name": "Bay leaf"
+    },
+    {
+     "amount": "0.25",
+     "unit": "tsp",
+     "name": "Black pepper"
+    },
+    {
+     "amount": "2",
+     "unit": "tsp",
+     "name": "Salt (divided, adjust to taste)"
+    },
+    {
+     "amount": "2",
+     "unit": "ea",
+     "name": "Boneless skinless chicken breasts"
+    },
+    {
+     "amount": "8",
+     "unit": "cup",
+     "name": "Chicken broth"
+    },
+    {
+     "amount": "6",
+     "unit": "oz",
+     "name": "Uncooked egg noodles"
+    }
+   ],
+   "steps": [
+    "Dice onion, mince garlic, peel and dice carrots, dice celery. Mince parsley, set aside.",
+    "Heat olive oil in large pot over medium. Add onion + carrots + celery, cook ~6 min until softened.",
+    "Stir in garlic + basil + thyme + bay leaf + pepper + 1 tsp salt. Cook 5 more min.",
+    "Add chicken breasts, cover with chicken broth.",
+    "Cover pot, bring to a boil over high, reduce to low, simmer 1 hour (keep it bubbling).",
+    "Remove chicken, shred with two forks. Set aside. Taste broth, adjust salt.",
+    "Return broth to boil, add egg noodles, cook ~7 min until tender.",
+    "Stir shredded chicken back in, reheat if needed. Top with fresh parsley, serve hot."
+   ],
+   "notes": "budgetbytes.com (Beth Moncel)",
+   "prep_min": 15,
+   "cook_min": 90,
+   "meal_prep": "MAKES 8 SERVINGS — huge batch, great for the week + freezer.\n\nSunday 1h45m (mostly hands-off simmer):\n1. Sauté veg (10 min), add chicken + broth, simmer 1 hour hands-off.\n2. Shred chicken, add noodles last 7 min.\n3. Portion into 8 containers (~1.5 cups each).\n4. Fridge 4 days OR freeze 3 months.\n5. REHEAT TIP: noodles get mushy on day 3+. For freezer portions, make soup without noodles and add fresh when serving.",
+   "tips": "• Per serving: 213 kcal / 17P / 21C / 7F — LOW for a LUCAS dinner target.\n• Serve with crusty bread + butter (+200 kcal/8P/35C) and add 4 oz pulled chicken on top (+180 kcal/35P) to hit dinner macros.\n• Or eat 2 servings for a comforting ~430 kcal / 34P meal.\n• Best winter sick-day food on the planet."
+  }
+ ],
+ "days": [
+  {
+   "plan_date": "2026-10-19",
+   "day_type": "gym",
+   "target_kcal": 2800,
+   "target_protein": 210,
+   "target_carbs": 330,
+   "target_fat": 70
+  },
+  {
+   "plan_date": "2026-10-20",
+   "day_type": "gym",
+   "target_kcal": 2800,
+   "target_protein": 210,
+   "target_carbs": 330,
+   "target_fat": 70
+  },
+  {
+   "plan_date": "2026-10-21",
+   "day_type": "gym",
+   "target_kcal": 2800,
+   "target_protein": 210,
+   "target_carbs": 330,
+   "target_fat": 70
+  },
+  {
+   "plan_date": "2026-10-22",
+   "day_type": "gym",
+   "target_kcal": 2800,
+   "target_protein": 210,
+   "target_carbs": 330,
+   "target_fat": 70
+  },
+  {
+   "plan_date": "2026-10-23",
+   "day_type": "gym",
+   "target_kcal": 2800,
+   "target_protein": 210,
+   "target_carbs": 330,
+   "target_fat": 70
+  },
+  {
+   "plan_date": "2026-10-24",
+   "day_type": "rest",
+   "target_kcal": 2250,
+   "target_protein": 210,
+   "target_carbs": 175,
+   "target_fat": 80
+  },
+  {
+   "plan_date": "2026-10-25",
+   "day_type": "rest",
+   "target_kcal": 2250,
+   "target_protein": 210,
+   "target_carbs": 175,
+   "target_fat": 80
+  }
+ ],
+ "meals": [
+  {
+   "plan_date": "2026-10-19",
+   "slot": "preworkout",
+   "recipe_id": "seed-prework-belvita-shake",
+   "servings": 1,
+   "meal_time": "05:50"
+  },
+  {
+   "plan_date": "2026-10-19",
+   "slot": "breakfast",
+   "recipe_id": "seed-sausage-potato-bowl",
+   "servings": 1,
+   "meal_time": "07:45"
+  },
+  {
+   "plan_date": "2026-10-19",
+   "slot": "lunch",
+   "recipe_id": "seed-chipotle-bowl",
+   "servings": 1,
+   "meal_time": "12:30"
+  },
+  {
+   "plan_date": "2026-10-19",
+   "slot": "snack",
+   "recipe_id": "seed-snack-turkey-bell-hummus",
+   "servings": 1,
+   "meal_time": "15:30"
+  },
+  {
+   "plan_date": "2026-10-19",
+   "slot": "dinner",
+   "recipe_id": "seed-halal-chicken-rice",
+   "servings": 1,
+   "meal_time": "18:30"
+  },
+  {
+   "plan_date": "2026-10-20",
+   "slot": "preworkout",
+   "recipe_id": "seed-prework-belvita-shake",
+   "servings": 1,
+   "meal_time": "05:50"
+  },
+  {
+   "plan_date": "2026-10-20",
+   "slot": "breakfast",
+   "recipe_id": "seed-sausage-potato-bowl",
+   "servings": 1,
+   "meal_time": "07:45"
+  },
+  {
+   "plan_date": "2026-10-20",
+   "slot": "lunch",
+   "recipe_id": "seed-chipotle-bowl",
+   "servings": 1,
+   "meal_time": "12:30"
+  },
+  {
+   "plan_date": "2026-10-20",
+   "slot": "snack",
+   "recipe_id": "seed-snack-eggs-chicken-salad",
+   "servings": 1,
+   "meal_time": "15:30"
+  },
+  {
+   "plan_date": "2026-10-20",
+   "slot": "dinner",
+   "recipe_id": "seed-halal-chicken-rice",
+   "servings": 1,
+   "meal_time": "18:30"
+  },
+  {
+   "plan_date": "2026-10-21",
+   "slot": "preworkout",
+   "recipe_id": "seed-prework-belvita-shake",
+   "servings": 1,
+   "meal_time": "05:50"
+  },
+  {
+   "plan_date": "2026-10-21",
+   "slot": "breakfast",
+   "recipe_id": "seed-sausage-potato-bowl",
+   "servings": 1,
+   "meal_time": "07:45"
+  },
+  {
+   "plan_date": "2026-10-21",
+   "slot": "lunch",
+   "recipe_id": "seed-chipotle-bowl",
+   "servings": 1,
+   "meal_time": "12:30"
+  },
+  {
+   "plan_date": "2026-10-21",
+   "slot": "snack",
+   "recipe_id": "seed-snack-turkey-bell-hummus",
+   "servings": 1,
+   "meal_time": "15:30"
+  },
+  {
+   "plan_date": "2026-10-21",
+   "slot": "dinner",
+   "recipe_id": "seed-cajun-sausage-rice",
+   "servings": 1,
+   "meal_time": "18:30"
+  },
+  {
+   "plan_date": "2026-10-22",
+   "slot": "preworkout",
+   "recipe_id": "seed-prework-belvita-shake",
+   "servings": 1,
+   "meal_time": "05:50"
+  },
+  {
+   "plan_date": "2026-10-22",
+   "slot": "breakfast",
+   "recipe_id": "seed-sausage-potato-bowl",
+   "servings": 1,
+   "meal_time": "07:45"
+  },
+  {
+   "plan_date": "2026-10-22",
+   "slot": "lunch",
+   "recipe_id": "seed-chipotle-bowl",
+   "servings": 1,
+   "meal_time": "12:30"
+  },
+  {
+   "plan_date": "2026-10-22",
+   "slot": "snack",
+   "recipe_id": "seed-snack-eggs-chicken-salad",
+   "servings": 1,
+   "meal_time": "15:30"
+  },
+  {
+   "plan_date": "2026-10-22",
+   "slot": "dinner",
+   "recipe_id": "seed-turkey-chili",
+   "servings": 1,
+   "meal_time": "18:30"
+  },
+  {
+   "plan_date": "2026-10-23",
+   "slot": "preworkout",
+   "recipe_id": "seed-prework-belvita-shake",
+   "servings": 1,
+   "meal_time": "05:50"
+  },
+  {
+   "plan_date": "2026-10-23",
+   "slot": "breakfast",
+   "recipe_id": "seed-granola-breakfast-bowl",
+   "servings": 1,
+   "meal_time": "07:45"
+  },
+  {
+   "plan_date": "2026-10-23",
+   "slot": "lunch",
+   "recipe_id": "seed-cajun-sausage-rice",
+   "servings": 1,
+   "meal_time": "12:30"
+  },
+  {
+   "plan_date": "2026-10-23",
+   "slot": "snack",
+   "recipe_id": "seed-snack-turkey-bell-hummus",
+   "servings": 1,
+   "meal_time": "15:30"
+  },
+  {
+   "plan_date": "2026-10-23",
+   "slot": "dinner",
+   "recipe_id": "seed-turkey-chili",
+   "servings": 1,
+   "meal_time": "18:30"
+  },
+  {
+   "plan_date": "2026-10-24",
+   "slot": "breakfast",
+   "recipe_id": "seed-granola-breakfast-bowl",
+   "servings": 1,
+   "meal_time": "09:00"
+  },
+  {
+   "plan_date": "2026-10-24",
+   "slot": "lunch",
+   "recipe_id": "seed-cajun-sausage-rice",
+   "servings": 1,
+   "meal_time": "12:30"
+  },
+  {
+   "plan_date": "2026-10-24",
+   "slot": "dinner",
+   "recipe_id": "seed-chicken-noodle-soup",
+   "servings": 2,
+   "meal_time": "18:30"
+  },
+  {
+   "plan_date": "2026-10-25",
+   "slot": "breakfast",
+   "recipe_id": "seed-granola-breakfast-bowl",
+   "servings": 1,
+   "meal_time": "09:00"
+  },
+  {
+   "plan_date": "2026-10-25",
+   "slot": "lunch",
+   "recipe_id": "seed-cajun-sausage-rice",
+   "servings": 1,
+   "meal_time": "12:30"
+  },
+  {
+   "plan_date": "2026-10-25",
+   "slot": "dinner",
+   "recipe_id": "seed-chicken-noodle-soup",
+   "servings": 2,
+   "meal_time": "18:30"
+  }
+ ]
+}
