@@ -154,7 +154,7 @@ export default function PlannerView({ onBack }: PlannerViewProps) {
         await fetch('/api/google-calendar/update', {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ eventId: ev.id, start: newStart, end: newEnd }),
+          body: JSON.stringify({ eventId: ev.id, calendarId: (ev as CalendarEvent & { calendar_id?: string }).calendar_id, start: newStart, end: newEnd }),
         })
       } catch {
         fetchEvents() // revert on error

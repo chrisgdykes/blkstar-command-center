@@ -42,23 +42,30 @@ async function getValidToken(): Promise<string> {
   return tokens.access_token
 }
 
-// PATCH /api/google-calendar/update  { eventId, start, end }
+// PATCH /api/google-calendar/update  { eventId, calendarId, start, end }
 export async function PATCH(req: NextRequest) {
   try {
-    const { eventId, start, end } = await req.json()
+    const { eventId, calendarId, start, end } = await req.json()
     if (!eventId || !start || !end) {
       return NextResponse.json({ error: 'eventId, start, end required' }, { status: 400 })
     }
 
     const accessToken = await getValidToken()
 
-    const patchBody = {
-      start: { dateTime: start, timeZone: 'America/New_York' },
-      end:   { dateTime: end,   timeZone: 'America/New_York' },
-    }
+    // For all-day events (no T in start), use date format; otherwise dateTime
+    const isAllDay = !start.includes('T')
+    const patchBody = isAllDay
+      ? { start: { date: start }, end: { date: end } }
+      : {
+          start: { dateTime: start, timeZone: 'America/New_York' },
+          end:   { dateTime: end,   timeZone: 'America/New_York' },
+        }
+
+    // Use provided calendarId, fall back to 'primary'
+    const calId = encodeURIComponent(calendarId || 'primary')
 
     const res = await fetch(
-      `https://www.googleapis.com/calendar/v3/calendars/primary/events/${encodeURIComponent(eventId)}`,
+      `https://www.googleapis.com/calendar/v3/calendars/${calId}/events/${encodeURIComponent(eventId)}`,
       {
         method: 'PATCH',
         headers: {
