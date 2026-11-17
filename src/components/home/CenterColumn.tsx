@@ -210,7 +210,7 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
                   <div
                     key={ev.id}
                     className="w-full truncate rounded px-1 text-[9px] font-semibold leading-tight py-px text-white"
-                    style={{ backgroundColor: lifeAreaColors[ev.life_area] ?? '#6B7280' }}
+                    style={{ backgroundColor: (ev as CalendarEvent & { calendar_color?: string }).calendar_color ?? lifeAreaColors[ev.life_area as keyof typeof lifeAreaColors] ?? '#6B7280' }}
                     title={ev.title}
                   >
                     {ev.title}

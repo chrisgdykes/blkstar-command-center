@@ -14,23 +14,23 @@ const CACHE_TTL = 2 * 60 * 1000
 
 const MVP_USER_ID = '00000000-0000-0000-0000-000000000001'
 
-// Map Google Calendar color IDs → life_area
-// colorId 1–11 are Google's named colors; background is the hex fallback
-const COLOR_ID_TO_LIFE_AREA: Record<string, string> = {
-  '1':  'health',      // Tomato
-  '2':  'health',      // Flamingo
-  '3':  'finance',     // Tangerine
-  '4':  'personal',    // Banana
-  '5':  'personal',    // Sage
-  '6':  'work',        // Basil
-  '7':  'work',        // Peacock
-  '8':  'work',        // Blueberry
-  '9':  'health',      // Lavender
-  '10': 'personal',    // Grape
-  '11': 'personal',    // Graphite
+// Google Calendar color IDs → hex (official palette)
+// https://developers.google.com/calendar/api/v3/reference/colors
+const GOOGLE_COLOR_HEX: Record<string, string> = {
+  '1':  '#D50000', // Tomato
+  '2':  '#E67C73', // Flamingo
+  '3':  '#F6BF26', // Tangerine
+  '4':  '#33B679', // Banana
+  '5':  '#0B8043', // Sage
+  '6':  '#039BE5', // Basil
+  '7':  '#3F51B5', // Peacock
+  '8':  '#7986CB', // Blueberry
+  '9':  '#8E24AA', // Lavender
+  '10': '#616161', // Graphite
+  '11': '#F4511E', // Grape
 }
 
-// Map calendar name keywords → life_area (fallback when no colorId)
+// Map calendar name keywords → life_area (for life_area field only)
 function calNameToLifeArea(name: string): string {
   const n = name.toLowerCase()
   if (n.includes('rover') || n.includes('pet') || n.includes('dog')) return 'personal'
@@ -73,7 +73,6 @@ export async function GET() {
   try {
     const supabase = createClient(supabaseUrl, supabaseServiceKey)
 
-    // Get stored tokens
     const { data: tokenRow, error: tokenErr } = await supabase
       .from('google_tokens')
       .select('*')
@@ -89,7 +88,6 @@ export async function GET() {
 
     let accessToken = tokenRow.access_token
 
-    // Refresh if expired
     if (new Date(tokenRow.expires_at) <= new Date()) {
       const refreshRes = await fetch('https://oauth2.googleapis.com/token', {
         method: 'POST',
@@ -121,7 +119,7 @@ export async function GET() {
         .eq('user_id', MVP_USER_ID)
     }
 
-    // Step 1: Get the list of all calendars the user has
+    // Step 1: list all calendars
     const calListRes = await fetch(
       'https://www.googleapis.com/calendar/v3/users/me/calendarList?maxResults=50',
       { headers: { Authorization: `Bearer ${accessToken}` } }
@@ -138,7 +136,7 @@ export async function GET() {
       (c: CalendarListEntry) => c.accessRole !== 'freeBusyReader'
     )
 
-    // Step 2: Fetch events from all calendars in parallel
+    // Step 2: fetch events from all calendars in parallel
     const now = new Date()
     const timeMin = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 60).toISOString()
     const timeMax = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 60).toISOString()
@@ -159,34 +157,41 @@ export async function GET() {
       )
       if (!res.ok) return []
       const data = await res.json()
-      const calLifeArea = cal.colorId
-        ? (COLOR_ID_TO_LIFE_AREA[cal.colorId] ?? calNameToLifeArea(cal.summary))
-        : calNameToLifeArea(cal.summary)
 
-      return (data.items || []).map((e: GoogleCalendarEvent) => ({
-        id: e.id,
-        title: e.summary || '(No title)',
-        description: e.description || '',
-        start_at: e.start?.dateTime || e.start?.date || '',
-        end_at: e.end?.dateTime || e.end?.date || '',
-        all_day: !e.start?.dateTime,
-        location: e.location || '',
-        status: e.status === 'confirmed' ? 'confirmed' : 'scheduled',
-        source: 'google' as const,
-        external_id: e.id,
-        calendar_name: cal.summary,
-        // Per-event colorId overrides calendar colorId
-        life_area: e.colorId
-          ? (COLOR_ID_TO_LIFE_AREA[e.colorId] ?? calLifeArea)
-          : calLifeArea,
-        event_type: 'task' as const,
-      }))
+      // Calendar-level color: prefer backgroundColor from API, fall back to colorId lookup
+      const calColor = cal.backgroundColor
+        || (cal.colorId ? GOOGLE_COLOR_HEX[cal.colorId] : null)
+        || '#9CA3AF'
+
+      const calLifeArea = calNameToLifeArea(cal.summary)
+
+      return (data.items || []).map((e: GoogleCalendarEvent) => {
+        // Per-event color overrides calendar color if set
+        const eventColor = e.colorId ? GOOGLE_COLOR_HEX[e.colorId] : null
+        return {
+          id: e.id,
+          title: e.summary || '(No title)',
+          description: e.description || '',
+          start_at: e.start?.dateTime || e.start?.date || '',
+          end_at: e.end?.dateTime || e.end?.date || '',
+          all_day: !e.start?.dateTime,
+          location: e.location || '',
+          status: e.status === 'confirmed' ? 'confirmed' : 'scheduled',
+          source: 'google' as const,
+          external_id: e.id,
+          calendar_name: cal.summary,
+          // calendar_color: exact Google hex, used for pill color in the UI
+          calendar_color: eventColor ?? calColor,
+          life_area: calLifeArea,
+          event_type: 'task' as const,
+        }
+      })
     })
 
     const allEventArrays = await Promise.all(fetchPromises)
     const events = allEventArrays
       .flat()
-      .filter(e => e.start_at) // drop events with no start time
+      .filter(e => e.start_at)
       .sort((a, b) => a.start_at.localeCompare(b.start_at))
 
     const result = { events, count: events.length, fetched_at: new Date().toISOString() }
