@@ -74,17 +74,17 @@ export async function GET() {
         .eq('user_id', MVP_USER_ID)
     }
 
-    // Fetch events: today through 7 days out
+    // Fetch 60 days back through 60 days forward so month view always has full data
     const now = new Date()
-    const timeMin = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString()
-    const timeMax = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 30).toISOString()
+    const timeMin = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 60).toISOString()
+    const timeMax = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 60).toISOString()
 
     const params = new URLSearchParams({
       timeMin,
       timeMax,
       singleEvents: 'true',
       orderBy: 'startTime',
-      maxResults: '50',
+      maxResults: '200',
     })
 
     const eventsRes = await fetch(

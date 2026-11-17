@@ -26,6 +26,7 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
   const [viewYear, setViewYear] = useState(today.getFullYear())
   const [viewMonth, setViewMonth] = useState(today.getMonth())
   const [eventsByDate, setEventsByDate] = useState<Record<string, CalendarEvent[]>>({})
+  const [fetchKey, setFetchKey] = useState(0)
 
   useEffect(() => {
     const now = new Date()
@@ -35,24 +36,24 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
     setMounted(true)
   }, [])
 
-  // Fetch events and build date→events map
+  // Fetch events and build date→events map; re-runs when fetchKey changes
   useEffect(() => {
-    fetch('/api/google-calendar')
+    const bust = fetchKey > 0 ? `?bust=${fetchKey}` : ''
+    fetch(`/api/google-calendar${bust}`)
       .then(r => r.ok ? r.json() : null)
       .then(data => {
         if (!data?.events) return
         const map: Record<string, CalendarEvent[]> = {}
         for (const event of data.events as CalendarEvent[]) {
-          const dateKey = event.all_day
-            ? event.start_at.slice(0, 10)
-            : event.start_at.slice(0, 10)
+          const dateKey = event.start_at.slice(0, 10)
           if (!map[dateKey]) map[dateKey] = []
           map[dateKey].push(event)
         }
         setEventsByDate(map)
       })
       .catch(() => {/* silent fail */})
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchKey])
 
   const calendarDays = useMemo(() => {
     const daysInMonth = getDaysInMonth(viewYear, viewMonth)
@@ -135,6 +136,13 @@ export default function CenterColumn({ onNavigate }: CenterColumnProps) {
           </button>
         </div>
         <div className="flex items-center gap-1">
+          <button
+            onClick={() => setFetchKey(k => k + 1)}
+            title="Refresh calendar"
+            className="w-7 h-7 rounded-lg hover:bg-card-alt flex items-center justify-center text-text-muted hover:text-text transition-colors text-sm"
+          >
+            ↻
+          </button>
           <button
             onClick={prevMonth}
             className="w-7 h-7 rounded-lg hover:bg-card-alt flex items-center justify-center text-text-muted hover:text-text transition-colors"
