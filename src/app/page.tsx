@@ -10,6 +10,7 @@ import KitchenShopping from '@/components/kitchen/KitchenShopping'
 import DayView from '@/components/calendar/DayView'
 import PlannerView from '@/components/calendar/PlannerView'
 import FitnessView from '@/components/fitness/FitnessView'
+import RoverView from '@/components/rover/RoverView'
 
 export default function Dashboard() {
   const [view, setView] = useState<DashboardView>('home')
@@ -68,6 +69,7 @@ export default function Dashboard() {
         {view === 'finance' && <PlaceholderView label="Finance Dashboard" onBack={() => navigateTo('home')} />}
         {view === 'briefing' && <PlaceholderView label="Morning Briefing" onBack={() => navigateTo('home')} />}
         {view === 'fitness' && <FitnessView onBack={() => navigateTo('home')} />}
+        {view === 'rover' && <RoverView onBack={() => navigateTo('home')} />}
         {view === 'nutrition' && <KitchenDay onBack={() => navigateTo('home')} />}
         {view === 'shopping' && <KitchenShopping onBack={() => navigateTo('home')} />}
       </main>

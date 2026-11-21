@@ -90,7 +90,7 @@ interface RoverData {
   nextJob: { title: string; date: string; earnings: number } | null
 }
 
-function RoverTile() {
+function RoverTile({ onNavigate }: { onNavigate: (view: import('@/types').DashboardView) => void }) {
   const [data, setData]       = useState<RoverData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError]     = useState(false)
@@ -122,7 +122,7 @@ function RoverTile() {
 
   if (error || !data) {
     return (
-      <div className="bg-card rounded-xl border border-border px-3 py-2.5 text-left cursor-default">
+      <div onClick={() => onNavigate('rover')} className="bg-card rounded-xl border border-border px-3 py-2.5 text-left cursor-pointer transition-all hover:border-accent hover:shadow-sm">
         <div className="text-[10px] font-semibold text-text-muted uppercase tracking-wider mb-1">Rover</div>
         <div className="text-lg font-bold text-text leading-tight">🐕</div>
         <div className="text-[10px] text-text-muted mt-0.5">Not connected</div>
@@ -132,7 +132,7 @@ function RoverTile() {
 
   if (data.monthJobs === 0) {
     return (
-      <div className="bg-card rounded-xl border border-border px-3 py-2.5 text-left cursor-default">
+      <div onClick={() => onNavigate('rover')} className="bg-card rounded-xl border border-border px-3 py-2.5 text-left cursor-pointer transition-all hover:border-accent hover:shadow-sm">
         <div className="text-[10px] font-semibold text-text-muted uppercase tracking-wider mb-1">Rover</div>
         <div className="text-lg font-bold text-text leading-tight">🐕</div>
         <div className="text-[10px] text-text-muted mt-0.5">No jobs this month</div>
@@ -141,7 +141,7 @@ function RoverTile() {
   }
 
   return (
-    <div className="bg-card rounded-xl border border-border px-3 py-2.5 text-left cursor-default">
+    <div onClick={() => onNavigate('rover')} className="bg-card rounded-xl border border-border px-3 py-2.5 text-left cursor-pointer transition-all hover:border-accent hover:shadow-sm">
       <div className="text-[10px] font-semibold text-text-muted uppercase tracking-wider mb-1">Rover</div>
       <div className="text-lg font-bold text-text leading-tight">{fmt(data.monthIncome)}</div>
       <div className="text-[10px] text-text-muted mt-0.5">
@@ -202,7 +202,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
         </button>
 
-        <RoverTile />
+        <RoverTile onNavigate={onNavigate} />
 
         <button className="bg-card rounded-xl border border-border px-3 py-2.5 text-left cursor-default">
           <div className="text-[10px] font-semibold text-text-muted uppercase tracking-wider mb-1">Open Time</div>
