@@ -15,6 +15,7 @@ interface RateInput {
 interface ClientInput {
   name: string
   dogs: string[]
+  pet_count?: number
   notes?: string
   rates: RateInput[]
 }
@@ -32,7 +33,7 @@ export async function GET() {
   const { data: clients, error } = await supabase
     .from('rover_clients')
     .select(`
-      id, name, dogs, notes, created_at,
+      id, name, dogs, pet_count, notes, created_at,
       rover_rates ( service_key, rate )
     `)
     .order('name')
@@ -58,7 +59,7 @@ export async function POST(req: NextRequest) {
   // Insert client
   const { data: client, error: clientErr } = await supabase
     .from('rover_clients')
-    .insert({ name: body.name.trim(), dogs: body.dogs ?? [], notes: body.notes ?? null })
+    .insert({ name: body.name.trim(), dogs: body.dogs ?? [], pet_count: body.pet_count ?? 1, notes: body.notes ?? null })
     .select()
     .single()
 
@@ -97,7 +98,7 @@ export async function PUT(req: NextRequest) {
   // Update client row
   const { error: clientErr } = await supabase
     .from('rover_clients')
-    .update({ name: body.name.trim(), dogs: body.dogs ?? [], notes: body.notes ?? null })
+    .update({ name: body.name.trim(), dogs: body.dogs ?? [], pet_count: body.pet_count ?? 1, notes: body.notes ?? null })
     .eq('id', body.id)
 
   if (clientErr) {

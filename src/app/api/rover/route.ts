@@ -34,13 +34,13 @@ const SERVICE_LABELS: Record<string, string> = {
 // ── Client rate map ───────────────────────────────────────────────────────────
 // Built from rover_clients + rover_rates: dogName.lower → { serviceKey → rate }
 
-type ClientRateMap = Map<string, { clientName: string; rates: Record<string, number> }>
+type ClientRateMap = Map<string, { clientName: string; rates: Record<string, number>; petCount: number }>
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function loadClientRates(supabase: any): Promise<ClientRateMap> {
   const { data, error } = await supabase
     .from('rover_clients')
-    .select('name, dogs, rover_rates(service_key, rate)')
+    .select('name, dogs, pet_count, rover_rates(service_key, rate)')
 
   const map: ClientRateMap = new Map()
   if (error || !data) return map
@@ -48,6 +48,7 @@ async function loadClientRates(supabase: any): Promise<ClientRateMap> {
   for (const client of data as Array<{
     name: string
     dogs: string[]
+    pet_count: number
     rover_rates: Array<{ service_key: string; rate: number }>
   }>) {
     const ratesByService: Record<string, number> = {}
@@ -55,7 +56,7 @@ async function loadClientRates(supabase: any): Promise<ClientRateMap> {
       ratesByService[r.service_key] = r.rate
     }
     for (const dog of client.dogs ?? []) {
-      map.set(dog.toLowerCase().trim(), { clientName: client.name, rates: ratesByService })
+      map.set(dog.toLowerCase().trim(), { clientName: client.name, rates: ratesByService, petCount: client.pet_count ?? 1 })
     }
   }
 
@@ -105,9 +106,11 @@ function calcEarnings(
     if (entry) { matched = entry; break }
   }
 
-  const baseRate  = matched?.rates[serviceKey] ?? DEFAULT_RATES[serviceKey] ?? 0
-  const extraRate = ADDITIONAL_PET_RATES[serviceKey] ?? 0
-  const perUnit   = baseRate + Math.max(0, petCount - 1) * extraRate
+  const baseRate      = matched?.rates[serviceKey] ?? DEFAULT_RATES[serviceKey] ?? 0
+  const extraRate     = ADDITIONAL_PET_RATES[serviceKey] ?? 0
+  // Use client's stored pet count when matched; fall back to calendar event count
+  const effectivePets = matched ? (matched.petCount ?? petCount) : petCount
+  const perUnit       = baseRate + Math.max(0, effectivePets - 1) * extraRate
 
   let earnings = perUnit
   if ((serviceKey === 'overnight' || serviceKey === 'day sitting') && startStr && endStr) {
