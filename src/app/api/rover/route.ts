@@ -8,9 +8,9 @@ const supabaseUrl        = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
 const MVP_USER_ID        = '00000000-0000-0000-0000-000000000001'
 
-// ── Rates ─────────────────────────────────────────────────────────────────────
+// ── Default rates (fallback when no client profile matches) ───────────────────
 
-const BASE_RATES: Record<string, number> = {
+const DEFAULT_RATES: Record<string, number> = {
   overnight:     85,
   'drop-in':     25,
   'day sitting': 85,
@@ -31,44 +31,92 @@ const SERVICE_LABELS: Record<string, string> = {
   'dog walk':    'Dog Walk',
 }
 
+// ── Client rate map ───────────────────────────────────────────────────────────
+// Built from rover_clients + rover_rates: dogName.lower → { serviceKey → rate }
+
+type ClientRateMap = Map<string, { clientName: string; rates: Record<string, number> }>
+
+async function loadClientRates(supabase: ReturnType<typeof createClient>): Promise<ClientRateMap> {
+  const { data, error } = await supabase
+    .from('rover_clients')
+    .select('name, dogs, rover_rates(service_key, rate)')
+
+  const map: ClientRateMap = new Map()
+  if (error || !data) return map
+
+  for (const client of data as Array<{
+    name: string
+    dogs: string[]
+    rover_rates: Array<{ service_key: string; rate: number }>
+  }>) {
+    const ratesByService: Record<string, number> = {}
+    for (const r of client.rover_rates ?? []) {
+      ratesByService[r.service_key] = r.rate
+    }
+    for (const dog of client.dogs ?? []) {
+      map.set(dog.toLowerCase().trim(), { clientName: client.name, rates: ratesByService })
+    }
+  }
+
+  return map
+}
+
+// ── Parse event title ─────────────────────────────────────────────────────────
+// Format: "[Service] - [Pet Name(s)] ([count])"
+
 function parseEventTitle(title: string): { serviceKey: string | null; petName: string; petCount: number } {
   if (!title) return { serviceKey: null, petName: '', petCount: 1 }
 
   const lower = title.toLowerCase()
-  const keys = Object.keys(BASE_RATES).sort((a, b) => b.length - a.length)
+  const keys  = Object.keys(DEFAULT_RATES).sort((a, b) => b.length - a.length)
   let serviceKey: string | null = null
   for (const key of keys) {
     if (lower.startsWith(key)) { serviceKey = key; break }
   }
 
-  // Parse pet name from "Service - Name (N)"
   const nameMatch = title.match(/^[^-]+-\s*(.+?)\s*\(\d+\)\s*$/)
-  const petName = nameMatch ? nameMatch[1].trim() : ''
-
-  const petMatch = title.match(/\((\d+)\)\s*$/)
-  const petCount = petMatch ? parseInt(petMatch[1], 10) : 1
+  const petName   = nameMatch ? nameMatch[1].trim() : ''
+  const petMatch  = title.match(/\((\d+)\)\s*$/)
+  const petCount  = petMatch ? parseInt(petMatch[1], 10) : 1
 
   return { serviceKey, petName, petCount }
 }
 
+// ── Calculate earnings ────────────────────────────────────────────────────────
+// Uses client-specific base rate if found, else default.
+// Additional-pet surcharge always uses the default table.
+
 function calcEarnings(
   serviceKey: string,
   petCount: number,
+  petName: string,
   startStr: string | undefined,
   endStr: string | undefined,
-): number {
-  const base  = BASE_RATES[serviceKey] ?? 0
-  const extra = ADDITIONAL_PET_RATES[serviceKey] ?? 0
-  const perUnit = base + Math.max(0, petCount - 1) * extra
+  clientRates: ClientRateMap,
+): { earnings: number; clientName: string | null } {
+  // Find client by matching any individual pet name in the event's pet field
+  // e.g. "Maui + Jilly" → check "Maui" and "Jilly" separately
+  const petTokens = petName.split(/[+,&]/).map(s => s.trim().toLowerCase()).filter(Boolean)
+  let matched: { clientName: string; rates: Record<string, number> } | undefined
 
-  if ((serviceKey === 'overnight' || serviceKey === 'day sitting') && startStr && endStr) {
-    const start = new Date(startStr)
-    const end   = new Date(endStr)
-    const days = Math.max(1, Math.round((end.getTime() - start.getTime()) / (24 * 60 * 60 * 1000)))
-    return perUnit * days
+  for (const token of petTokens) {
+    const entry = clientRates.get(token)
+    if (entry) { matched = entry; break }
   }
 
-  return perUnit
+  const baseRate  = matched?.rates[serviceKey] ?? DEFAULT_RATES[serviceKey] ?? 0
+  const extraRate = ADDITIONAL_PET_RATES[serviceKey] ?? 0
+  const perUnit   = baseRate + Math.max(0, petCount - 1) * extraRate
+
+  let earnings = perUnit
+  if ((serviceKey === 'overnight' || serviceKey === 'day sitting') && startStr && endStr) {
+    const days = Math.max(1, Math.round(
+      (new Date(endStr).getTime() - new Date(startStr).getTime()) / (24 * 60 * 60 * 1000)
+    ))
+    earnings = perUnit * days
+  }
+
+  return { earnings, clientName: matched?.clientName ?? null }
 }
 
 // ── Cache ─────────────────────────────────────────────────────────────────────
@@ -85,12 +133,13 @@ export async function GET() {
   try {
     const supabase = createClient(supabaseUrl, supabaseServiceKey)
 
-    const { data: tokenRow, error: tokenErr } = await supabase
-      .from('google_tokens')
-      .select('*')
-      .eq('user_id', MVP_USER_ID)
-      .single()
+    // Load client rates in parallel with token fetch
+    const [clientRates, tokenResult] = await Promise.all([
+      loadClientRates(supabase),
+      supabase.from('google_tokens').select('*').eq('user_id', MVP_USER_ID).single(),
+    ])
 
+    const { data: tokenRow, error: tokenErr } = tokenResult
     if (tokenErr || !tokenRow) {
       return NextResponse.json({ error: 'not_connected' }, { status: 401 })
     }
@@ -113,11 +162,11 @@ export async function GET() {
       accessToken = refreshed.access_token
       await supabase.from('google_tokens').update({
         access_token: refreshed.access_token,
-        expires_at: new Date(Date.now() + refreshed.expires_in * 1000).toISOString(),
+        expires_at:   new Date(Date.now() + refreshed.expires_in * 1000).toISOString(),
       }).eq('user_id', MVP_USER_ID)
     }
 
-    // Find calendar containing "rover"
+    // Find the Rover calendar
     const calListRes = await fetch(
       'https://www.googleapis.com/calendar/v3/users/me/calendarList?maxResults=50',
       { headers: { Authorization: `Bearer ${accessToken}` } },
@@ -169,6 +218,7 @@ export async function GET() {
       serviceLabel: string
       petName: string
       petCount: number
+      clientName: string | null
       dateISO: string
       dateLabel: string
       earnings: number
@@ -185,17 +235,21 @@ export async function GET() {
       const { serviceKey, petName, petCount } = parseEventTitle(title)
       if (!serviceKey) continue
 
-      const earnings = calcEarnings(serviceKey, petCount, startRaw, endRaw)
-      const isPast   = startDate < todayStart
-      const isToday  = startDate.toDateString() === now.toDateString()
+      const { earnings, clientName } = calcEarnings(
+        serviceKey, petCount, petName, startRaw, endRaw, clientRates,
+      )
+
+      const isPast  = startDate < todayStart
+      const isToday = startDate.toDateString() === now.toDateString()
 
       allJobs.push({
         title,
-        service: serviceKey,
+        service:      serviceKey,
         serviceLabel: SERVICE_LABELS[serviceKey] ?? serviceKey,
         petName,
         petCount,
-        dateISO: startRaw,
+        clientName,
+        dateISO:   startRaw,
         dateLabel: startDate.toLocaleDateString('en-US', {
           weekday: 'short', month: 'short', day: 'numeric',
         }),
