@@ -99,7 +99,7 @@ function calcEarnings(
   // Find client by matching any individual pet name in the event's pet field
   // e.g. "Maui + Jilly" → check "Maui" and "Jilly" separately
   const petTokens = petName.split(/[+,&]/).map(s => s.trim().toLowerCase()).filter(Boolean)
-  let matched: { clientName: string; rates: Record<string, number> } | undefined
+  let matched: { clientName: string; rates: Record<string, number>; petCount: number } | undefined
 
   for (const token of petTokens) {
     const entry = clientRates.get(token)
