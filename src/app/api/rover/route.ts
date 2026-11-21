@@ -145,7 +145,7 @@ export async function GET() {
     const calListData = await calListRes.json()
     const roverCal = (calListData.items || []).find(
       (c: { summary: string }) =>
-        c.summary.toLowerCase() === ROVER_CALENDAR_NAME.toLowerCase(),
+        c.summary.toLowerCase().includes("rover"),
     )
 
     if (!roverCal) {
