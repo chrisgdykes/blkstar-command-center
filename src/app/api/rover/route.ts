@@ -36,7 +36,8 @@ const SERVICE_LABELS: Record<string, string> = {
 
 type ClientRateMap = Map<string, { clientName: string; rates: Record<string, number> }>
 
-async function loadClientRates(supabase: ReturnType<typeof createClient>): Promise<ClientRateMap> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function loadClientRates(supabase: any): Promise<ClientRateMap> {
   const { data, error } = await supabase
     .from('rover_clients')
     .select('name, dogs, rover_rates(service_key, rate)')
